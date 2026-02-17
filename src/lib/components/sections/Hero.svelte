@@ -16,9 +16,11 @@
 	let activeIndex = $state(0);
 	let heroSection: HTMLElement;
 	let imageWrapper: HTMLElement;
-	let headline: HTMLElement;
-	let tagline: HTMLElement;
-	let subtitle: HTMLElement;
+	let contentWrapper: HTMLElement;
+	let brandLabel: HTMLElement;
+	let headlineLine1: HTMLElement;
+	let headlineLine2: HTMLElement;
+	let cta: HTMLElement;
 	let scrollIndicator: HTMLElement;
 	let slideInterval: ReturnType<typeof setInterval>;
 	let ctx: gsap.Context;
@@ -31,51 +33,70 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		ctx = gsap.context(() => {
-			// Entrance timeline
-			const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+			// Entrance timeline — staggered reveal matching Benetti's editorial feel
+			const tl = gsap.timeline({
+				defaults: { ease: 'power3.out' },
+				delay: 0.3
+			});
 
-			tl.fromTo(
-				headline,
-				{ opacity: 0, y: 30 },
-				{ opacity: 1, y: 0, duration: 1 }
-			)
+			tl.fromTo(brandLabel, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8 })
 				.fromTo(
-					subtitle,
-					{ opacity: 0, y: 25 },
-					{ opacity: 1, y: 0, duration: 0.9 },
-					'-=0.5'
-				)
-				.fromTo(
-					tagline,
-					{ opacity: 0, y: 20 },
-					{ opacity: 1, y: 0, duration: 0.8 },
+					headlineLine1,
+					{ opacity: 0, y: 30 },
+					{ opacity: 1, y: 0, duration: 1 },
 					'-=0.4'
 				)
 				.fromTo(
-					scrollIndicator,
-					{ opacity: 0 },
-					{ opacity: 1, duration: 0.6 },
-					'-=0.2'
-				);
+					headlineLine2,
+					{ opacity: 0, y: 30 },
+					{ opacity: 1, y: 0, duration: 1 },
+					'-=0.6'
+				)
+				.fromTo(cta, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+				.fromTo(scrollIndicator, { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.2');
 
-			// Scroll-driven parallax exit
+			// Scroll exit — image scales up, feels like moving INTO the image
 			gsap.to(imageWrapper, {
-				scale: 1.05,
+				scale: 1.08,
 				scrollTrigger: {
 					trigger: heroSection,
 					start: 'top top',
 					end: 'bottom top',
-					scrub: true
+					scrub: 1
 				}
 			});
 
-			gsap.to(heroSection, {
-				opacity: 0.3,
+			// Content fades out faster than the hero itself
+			gsap.to(contentWrapper, {
+				opacity: 0,
+				y: -40,
+				scrollTrigger: {
+					trigger: heroSection,
+					start: 'top top',
+					end: '40% top',
+					scrub: 1
+				}
+			});
+
+			// Scroll indicator fades first
+			gsap.to(scrollIndicator, {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: heroSection,
+					start: 'top top',
+					end: '15% top',
+					scrub: 1
+				}
+			});
+
+			// Overall hero fades out for seamless transition
+			gsap.to(imageWrapper, {
+				opacity: 0,
 				scrollTrigger: {
 					trigger: heroSection,
 					start: '60% top',
 					end: 'bottom top',
-					scrub: true
+					scrub: 1
 				}
 			});
 		}, heroSection);
@@ -106,38 +127,49 @@
 		{/each}
 	</div>
 
-	<!-- Gradient overlay -->
+	<!-- Gradient overlay — centered text needs even coverage -->
+	<div class="absolute inset-0 bg-navy/50"></div>
 	<div
-		class="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"
+		class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/30"
 	></div>
 
-	<!-- Content -->
-	<div class="relative z-10 flex h-full flex-col justify-end px-6 pb-24 md:px-12 md:pb-32 lg:pb-40">
-		<div class="max-w-7xl mx-auto w-full">
-			<!-- Headline -->
-			<h1
-				bind:this={headline}
-				class="font-display text-5xl font-light uppercase leading-[0.9] tracking-[0.08em] text-white opacity-0 md:text-7xl lg:text-8xl"
-			>
-				Ramacciotti<br />Yachts
-			</h1>
+	<!-- Content — centered like Benetti -->
+	<div
+		bind:this={contentWrapper}
+		class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+	>
+		<!-- Brand label — equivalent to Benetti's "[ B. NEOS 40M ]" -->
+		<p
+			bind:this={brandLabel}
+			class="mb-6 text-[10px] uppercase tracking-[0.4em] text-white/50 opacity-0 md:mb-8 md:text-xs"
+		>
+			Ramacciotti Yachts
+		</p>
 
-			<!-- Subtitle -->
-			<p
-				bind:this={subtitle}
-				class="mt-5 text-xs font-light uppercase tracking-[0.3em] text-gold opacity-0 md:mt-6 md:text-sm"
+		<!-- Headline — mixed weight like Benetti's "The SOUL of SILENCE" -->
+		<h1 class="font-display leading-[1.05]">
+			<span
+				bind:this={headlineLine1}
+				class="block text-4xl font-light tracking-[0.04em] text-white opacity-0 md:text-6xl lg:text-7xl"
 			>
-				Boutique Yacht Advisory &amp; Charter Brokerage
-			</p>
+				<span class="italic font-extralight">Where</span> Elegance
+			</span>
+			<span
+				bind:this={headlineLine2}
+				class="block text-4xl font-light tracking-[0.04em] text-white opacity-0 md:text-6xl lg:text-7xl"
+			>
+				<span class="italic font-extralight">Meets</span> Intention
+			</span>
+		</h1>
 
-			<!-- Tagline -->
-			<p
-				bind:this={tagline}
-				class="mt-4 max-w-md text-sm font-light leading-relaxed text-white/70 opacity-0 md:mt-5 md:max-w-lg md:text-base"
-			>
-				Journeys defined by elegance, intention, and thoughtful detail.
-			</p>
-		</div>
+		<!-- CTA — equivalent to Benetti's "DISCOVER THE YACHT" -->
+		<a
+			bind:this={cta}
+			href="#fleet"
+			class="mt-8 border-b border-gold/40 pb-1 text-[10px] uppercase tracking-[0.3em] text-gold opacity-0 transition-colors duration-300 hover:border-gold hover:text-gold-light md:mt-10 md:text-xs"
+		>
+			Discover the Fleet
+		</a>
 	</div>
 
 	<!-- Scroll indicator -->

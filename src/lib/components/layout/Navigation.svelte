@@ -3,15 +3,15 @@
 	import type { NavLink } from '$lib/types';
 
 	const navLinks: NavLink[] = [
+		{ label: 'About', href: '#about' },
 		{ label: 'Fleet', href: '#fleet' },
-		{ label: 'Charter', href: '#charter' },
-		{ label: 'Management', href: '#management' },
-		{ label: 'Destinations', href: '#destinations' },
-		{ label: 'Contact', href: '#contact' }
+		{ label: 'The Club', href: '#club' },
+		{ label: 'Corporate', href: '#corporate' },
+		{ label: 'Journal', href: '#journal' }
 	];
 
 	let scrolled = $state(false);
-	let mobileMenuOpen = $state(false);
+	let menuOpen = $state(false);
 
 	$effect(() => {
 		function handleScroll() {
@@ -26,12 +26,12 @@
 		};
 	});
 
-	function toggleMobileMenu() {
-		mobileMenuOpen = !mobileMenuOpen;
+	function toggleMenu() {
+		menuOpen = !menuOpen;
 	}
 
-	function closeMobileMenu() {
-		mobileMenuOpen = false;
+	function closeMenu() {
+		menuOpen = false;
 	}
 </script>
 
@@ -40,42 +40,45 @@
 		? 'bg-navy shadow-lg shadow-navy/20'
 		: 'bg-transparent'}"
 >
-	<div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 md:px-12">
-		<!-- Wordmark -->
-		<a href="/" class="text-white text-sm font-light tracking-[0.25em] uppercase md:text-base">
+	<div class="flex items-center justify-between px-6 py-5 md:px-12">
+		<!-- Menu toggle — top left -->
+		<button
+			class="relative z-[60] flex items-center gap-3"
+			onclick={toggleMenu}
+			aria-label="Toggle menu"
+		>
+			<div class="flex flex-col items-start gap-1.5">
+				<span
+					class="block h-px w-6 bg-white transition-all duration-300 {menuOpen
+						? 'translate-y-[3.5px] rotate-45'
+						: ''}"
+				></span>
+				<span
+					class="block h-px bg-white transition-all duration-300 {menuOpen
+						? '-translate-y-[2.5px] -rotate-45 w-6'
+						: 'w-4'}"
+				></span>
+			</div>
+			<span
+				class="text-[10px] uppercase tracking-[0.25em] text-white/70 transition-opacity duration-300 {menuOpen
+					? 'opacity-0'
+					: 'opacity-100'}"
+			>
+				Menu
+			</span>
+		</button>
+
+		<!-- Centered wordmark / logo -->
+		<a
+			href="/"
+			class="absolute left-1/2 -translate-x-1/2 text-white text-sm font-light tracking-[0.25em] uppercase md:text-base"
+		>
 			Ramacciotti Yachts
 		</a>
 
-		<!-- Desktop nav links -->
-		<div class="hidden items-center gap-8 md:flex">
-			{#each navLinks as link}
-				<a
-					href={link.href}
-					class="text-white/80 text-xs uppercase tracking-[0.2em] transition-colors duration-200 hover:text-gold"
-				>
-					{link.label}
-				</a>
-			{/each}
-		</div>
-
-		<!-- Mobile hamburger -->
-		<button
-			class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
-			onclick={toggleMobileMenu}
-			aria-label="Toggle menu"
-		>
-			<span
-				class="block h-px w-6 bg-white transition-all duration-300 {mobileMenuOpen
-					? 'translate-y-[3.5px] rotate-45'
-					: ''}"
-			></span>
-			<span
-				class="block h-px w-6 bg-white transition-all duration-300 {mobileMenuOpen
-					? '-translate-y-[2.5px] -rotate-45'
-					: ''}"
-			></span>
-		</button>
+		<!-- Right side spacer for balance -->
+		<div class="w-20"></div>
 	</div>
 </nav>
 
-<MobileMenu open={mobileMenuOpen} {navLinks} onclose={closeMobileMenu} />
+<MobileMenu open={menuOpen} {navLinks} onclose={closeMenu} />

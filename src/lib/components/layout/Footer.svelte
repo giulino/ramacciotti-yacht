@@ -2,10 +2,11 @@
 	import type { NavLink, SocialLink } from '$lib/types';
 
 	const navLinks: NavLink[] = [
+		{ label: 'About', href: '#about' },
 		{ label: 'Fleet', href: '#fleet' },
-		{ label: 'Charter', href: '#charter' },
-		{ label: 'Management', href: '#management' },
-		{ label: 'Contact', href: '#contact' }
+		{ label: 'The Club', href: '#club' },
+		{ label: 'Corporate', href: '#corporate' },
+		{ label: 'Journal', href: '#journal' }
 	];
 
 	const socialLinks: SocialLink[] = [

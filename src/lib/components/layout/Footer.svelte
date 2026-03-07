@@ -2,53 +2,53 @@
 	import type { NavLink, SocialLink } from '$lib/types';
 
 	const navLinks: NavLink[] = [
-		{ label: 'About', href: '#about' },
-		{ label: 'Fleet', href: '#fleet' },
-		{ label: 'The Club', href: '#club' },
-		{ label: 'Corporate', href: '#corporate' },
-		{ label: 'Journal', href: '#journal' }
+		{ label: 'Home', href: '/' },
+		{ label: 'About', href: '/#about' },
+		{ label: 'Fleet', href: '/#fleet-overview' },
+		{ label: 'The Club', href: '/#club' },
+		{ label: 'Corporate', href: '/#corporate-circle' },
+		{ label: 'Journal', href: '/#journal-home' }
 	];
 
 	const socialLinks: SocialLink[] = [
 		{ label: 'Instagram', href: '#' },
-		{ label: 'LinkedIn', href: '#' },
-		{ label: 'Facebook', href: '#' }
+		{ label: 'LinkedIn', href: '#' }
 	];
 </script>
 
-<footer class="border-t border-white/10 bg-navy py-16 md:py-20">
-	<div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
-		<!-- Wordmark -->
-		<p class="text-white text-sm font-light tracking-[0.25em] uppercase md:text-base">
-			Ramacciotti Yachts
-		</p>
+<footer class="border-t border-white/10 bg-[#12163b] py-12 md:py-14">
+	<div class="mx-auto max-w-7xl px-6 text-center md:px-12">
+		<img
+			src="/LOGO/RAMACCIOTTI_BIANCO_COMPLETO.png"
+			alt="Ramacciotti Yachts"
+			class="mx-auto h-auto w-52 md:w-[17rem]"
+			loading="lazy"
+			decoding="async"
+		/>
 
-		<!-- Nav links -->
-		<div class="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+		<div class="mt-6 flex flex-wrap items-center justify-center gap-5 md:gap-8">
 			{#each navLinks as link}
 				<a
 					href={link.href}
-					class="text-white/60 text-xs uppercase tracking-[0.2em] transition-colors duration-200 hover:text-gold"
+					class="text-[0.74rem] uppercase tracking-[0.14em] text-white/68 transition-colors duration-200 hover:text-gold"
 				>
 					{link.label}
 				</a>
 			{/each}
 		</div>
 
-		<!-- Social links -->
-		<div class="mt-8 flex items-center justify-center gap-8">
+		<div class="mt-5 flex items-center justify-center gap-6 md:gap-8">
 			{#each socialLinks as link}
 				<a
 					href={link.href}
-					class="text-white/40 text-xs uppercase tracking-[0.15em] transition-colors duration-200 hover:text-gold"
+					class="text-[0.74rem] uppercase tracking-[0.14em] text-white/52 transition-colors duration-200 hover:text-gold"
 				>
 					{link.label}
 				</a>
 			{/each}
 		</div>
 
-		<!-- Legal -->
-		<p class="text-slate mt-12 text-xs tracking-wider">
+		<p class="text-slate mt-8 text-xs tracking-wider">
 			&copy; 2026 Ramacciotti Yachts. All rights reserved.
 		</p>
 	</div>

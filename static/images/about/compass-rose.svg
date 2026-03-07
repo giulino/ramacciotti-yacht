@@ -1,0 +1,32 @@
+<svg width="840" height="840" viewBox="0 0 840 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ring" x1="140" y1="140" x2="700" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#193A76"/>
+      <stop offset="1" stop-color="#0F2E66"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="420" cy="420" r="292" stroke="url(#ring)" stroke-width="15"/>
+  <circle cx="420" cy="420" r="257" stroke="url(#ring)" stroke-width="9"/>
+  <circle cx="420" cy="420" r="181" stroke="url(#ring)" stroke-width="11"/>
+
+  <path d="M420 110 L452 390 L420 420 L388 390 Z" fill="#11356F"/>
+  <path d="M730 420 L450 452 L420 420 L450 388 Z" fill="#11356F"/>
+  <path d="M420 730 L388 450 L420 420 L452 450 Z" fill="#11356F"/>
+  <path d="M110 420 L390 388 L420 420 L390 452 Z" fill="#11356F"/>
+
+  <path d="M420 168 L440 338 L420 358 L400 338 Z" fill="#FFFFFF"/>
+  <path d="M672 420 L502 440 L482 420 L502 400 Z" fill="#FFFFFF"/>
+  <path d="M420 672 L400 502 L420 482 L440 502 Z" fill="#FFFFFF"/>
+  <path d="M168 420 L338 400 L358 420 L338 440 Z" fill="#FFFFFF"/>
+
+  <path d="M420 236 L458 348 L420 384 L382 348 Z" fill="#11356F" opacity="0.95"/>
+  <path d="M604 420 L492 458 L456 420 L492 382 Z" fill="#11356F" opacity="0.95"/>
+  <path d="M420 604 L382 492 L420 456 L458 492 Z" fill="#11356F" opacity="0.95"/>
+  <path d="M236 420 L348 382 L384 420 L348 458 Z" fill="#11356F" opacity="0.95"/>
+
+  <text x="420" y="88" text-anchor="middle" fill="#11356F" font-family="Baskerville, 'Times New Roman', serif" font-size="72">N</text>
+  <text x="750" y="444" text-anchor="middle" fill="#11356F" font-family="Baskerville, 'Times New Roman', serif" font-size="72">E</text>
+  <text x="420" y="796" text-anchor="middle" fill="#11356F" font-family="Baskerville, 'Times New Roman', serif" font-size="72">S</text>
+  <text x="90" y="444" text-anchor="middle" fill="#11356F" font-family="Baskerville, 'Times New Roman', serif" font-size="72">W</text>
+</svg>

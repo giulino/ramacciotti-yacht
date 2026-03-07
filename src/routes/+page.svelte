@@ -1,17 +1,29 @@
 <script lang="ts">
+	import Footer from '$lib/components/layout/Footer.svelte';
+	import HomeStickyPanel from '$lib/components/layout/HomeStickyPanel.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
-	import BrandStory from '$lib/components/sections/BrandStory.svelte';
-	import FleetShowcase from '$lib/components/sections/FleetShowcase.svelte';
-	import Services from '$lib/components/sections/Services.svelte';
-	import FeaturedYacht from '$lib/components/sections/FeaturedYacht.svelte';
-	import Destinations from '$lib/components/sections/Destinations.svelte';
+	import HomeAboutSection from '$lib/components/sections/HomeAboutSection.svelte';
+	import HomeDestinationsSection from '$lib/components/sections/HomeDestinationsSection.svelte';
+	import HomeFleetSection from '$lib/components/sections/HomeFleetSection.svelte';
+	import HomeClubSection from '$lib/components/sections/HomeClubSection.svelte';
+	import HomeCorporateSection from '$lib/components/sections/HomeCorporateSection.svelte';
+	import HomeJournalSection from '$lib/components/sections/HomeJournalSection.svelte';
 	import ContactCTA from '$lib/components/sections/ContactCTA.svelte';
+	import HomeEventsSection from '$lib/components/sections/HomeEventsSection.svelte';
 </script>
 
+<svelte:head>
+	<title>Ramacciotti Yachts | Home</title>
+</svelte:head>
+
+<HomeStickyPanel />
 <Hero />
-<BrandStory />
-<FleetShowcase />
-<Services />
-<FeaturedYacht />
-<Destinations />
+<HomeAboutSection />
+<HomeFleetSection />
+<HomeDestinationsSection />
+<HomeClubSection />
+<HomeCorporateSection />
+<HomeJournalSection />
 <ContactCTA />
+<HomeEventsSection />
+<Footer />

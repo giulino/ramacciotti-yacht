@@ -105,17 +105,17 @@
 
 @theme {
   /* Color palette */
-  --color-navy: #0B1D33;
-  --color-navy-light: #142D4C;
-  --color-cream: #F5F0EB;
-  --color-gold: #C9A96E;
-  --color-gold-light: #D4BC8E;
-  --color-charcoal: #2C2C2C;
-  --color-slate: #6B7B8D;
+  --color-navy: #0D233A;
+  --color-navy-light: #1A3148;
+  --color-cream: #F7F2E9;
+  --color-gold: #BA9A66;
+  --color-gold-light: #CCB58E;
+  --color-charcoal: #25292D;
+  --color-slate: #66707A;
 
   /* Font families */
   --font-sans: 'Avenir', 'Avenir Next', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-  --font-display: 'ClashDisplay', 'Avenir', system-ui, sans-serif;
+  --font-display: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
 }
 
 /* ============================================
@@ -123,17 +123,17 @@
    ============================================ */
 
 :root {
-  --navy: #0B1D33;
-  --navy-light: #142D4C;
-  --cream: #F5F0EB;
-  --gold: #C9A96E;
-  --gold-light: #D4BC8E;
+  --navy: #0D233A;
+  --navy-light: #1A3148;
+  --cream: #F7F2E9;
+  --gold: #BA9A66;
+  --gold-light: #CCB58E;
   --white: #FFFFFF;
-  --charcoal: #2C2C2C;
-  --slate: #6B7B8D;
+  --charcoal: #25292D;
+  --slate: #66707A;
 
   --font-primary: 'Avenir', 'Avenir Next', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-  --font-display: 'ClashDisplay', 'Avenir', system-ui, sans-serif;
+  --font-display: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
 }
 
 /* ============================================
@@ -150,6 +150,19 @@ body {
   font-family: var(--font-primary);
   color: var(--charcoal);
   background-color: var(--cream);
+  background-image:
+    radial-gradient(1200px 700px at 18% -8%, rgb(255 255 255 / 52%), transparent 55%),
+    radial-gradient(900px 500px at 90% 110%, rgb(186 154 102 / 10%), transparent 60%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: 0.015em;
 }
 
 /* Selection color */

@@ -1,22 +1,43 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import { page } from '$app/state';
 	import Navigation from '$lib/components/layout/Navigation.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { children } = $props();
+	const isHome = $derived(page.url.pathname === '/');
+	const hideDefaultNavigation = $derived(
+		page.url.pathname === '/club' ||
+			page.url.pathname === '/corporate' ||
+			page.url.pathname.startsWith('/events/')
+	);
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<meta name="theme-color" content="#12163b" />
+	<meta name="msapplication-TileColor" content="#12163b" />
+	<meta name="msapplication-TileImage" content="/mstile-150x150.png" />
 	<title>Ramacciotti Yachts</title>
-	<meta name="description" content="Luxury yacht charter, management, and sales." />
+	<meta
+		name="description"
+		content="Founder-led yacht advisory and charter journeys shaped with discretion, refinement, and personal care."
+	/>
 </svelte:head>
 
-<Navigation />
+{#if !isHome && !hideDefaultNavigation}
+	<Navigation />
+{/if}
 
 <main>
 	{@render children()}
 </main>
 
-<Footer />
+{#if !isHome}
+	<Footer />
+{/if}

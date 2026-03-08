@@ -178,7 +178,6 @@
 		</a>
 
 		<nav class="home-sticky-panel__links" aria-label="Page shortcuts">
-			<a href="#fleet-overview">Fleet</a>
 			<a href="#home-enquiry">Contacts</a>
 		</nav>
 	</div>

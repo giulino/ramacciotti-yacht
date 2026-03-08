@@ -9,6 +9,8 @@
 	const hideDefaultNavigation = $derived(
 		page.url.pathname === '/club' ||
 			page.url.pathname === '/corporate' ||
+			page.url.pathname === '/fleet' ||
+			page.url.pathname === '/fleet-showcase' ||
 			page.url.pathname.startsWith('/events/')
 	);
 </script>

@@ -1,0 +1,6 @@
+<svg width="220" height="120" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MTA">
+  <rect x="1" y="1" width="218" height="118" rx="2" stroke="#BA9A66" stroke-opacity="0.55"/>
+  <path d="M42 84V36H57L79 70L101 36H116V84H102V59L79 92L56 59V84H42Z" fill="#1A3148"/>
+  <path d="M127 36H178V48H160V84H145V48H127V36Z" fill="#1A3148"/>
+  <path d="M182 84L202 36H218L198 84H182Z" fill="#1A3148"/>
+</svg>

@@ -142,16 +142,16 @@
 	}
 
 	.destinations-editorial {
-		padding: clamp(1.1rem, 3vh, 2.2rem) 0 clamp(2.6rem, 7vh, 5.4rem);
+		padding: clamp(0.65rem, 1.7vh, 1.2rem) 0 clamp(1.7rem, 4.5vh, 3.3rem);
 		display: grid;
-		gap: clamp(1rem, 2.2vh, 1.7rem);
+		gap: clamp(0.6rem, 1.1vh, 0.9rem);
 	}
 
 	.destination-block {
 		display: grid;
 		grid-template-columns: minmax(20rem, 1.05fr) minmax(20rem, 0.95fr);
 		align-items: stretch;
-		min-height: min(86vh, 56rem);
+		min-height: min(66vh, 42rem);
 	}
 
 	.destination-block.is-reversed {
@@ -174,7 +174,7 @@
 
 	.destination-copy {
 		background: #f8f6f1;
-		padding: clamp(1.4rem, 4.2vw, 4rem);
+		padding: clamp(1rem, 2.5vw, 2.2rem);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -190,9 +190,9 @@
 	}
 
 	.destination-copy h3 {
-		margin: 0.68rem 0 0;
+		margin: 0.52rem 0 0;
 		font-family: var(--font-display);
-		font-size: clamp(1.6rem, 3vw, 3rem);
+		font-size: clamp(1.32rem, 2.1vw, 2.2rem);
 		line-height: 0.98;
 	}
 
@@ -201,21 +201,21 @@
 	}
 
 	.destination-copy > p {
-		margin: 1.1rem 0 0;
+		margin: 0.72rem 0 0;
 		font-family: var(--font-primary);
-		font-size: clamp(0.94rem, 1.05vw, 1.06rem);
-		line-height: 1.72;
+		font-size: clamp(0.9rem, 0.92vw, 0.97rem);
+		line-height: 1.56;
 		letter-spacing: 0.007em;
 		color: rgba(18, 22, 59, 0.87);
 	}
 
 	.destination-season {
-		margin-top: 1rem;
+		margin-top: 0.65rem;
 		font-weight: 500;
 	}
 
 	.destination-cta {
-		margin-top: 1.25rem;
+		margin-top: 0.82rem;
 		align-self: flex-start;
 		border-bottom: 1px solid rgba(18, 22, 59, 0.52);
 		padding-bottom: 0.18rem;
@@ -245,7 +245,46 @@
 		}
 
 		.destination-media {
-			height: 56vh;
+			height: 44vh;
+		}
+
+		.destination-copy {
+			padding: 1.25rem 1rem 1.4rem;
+		}
+
+		.destination-copy h3 {
+			margin-top: 0.5rem;
+			font-size: clamp(1.45rem, 5.8vw, 2.05rem);
+		}
+
+		.destination-copy > p {
+			margin-top: 0.82rem;
+			font-size: 0.94rem;
+			line-height: 1.62;
+		}
+
+		.destination-season {
+			margin-top: 0.72rem;
+		}
+
+		.destination-cta {
+			margin-top: 0.95rem;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.destinations-intro {
+			padding-bottom: 1.4rem;
+		}
+
+		.destinations-editorial {
+			padding-top: 0.6rem;
+			padding-bottom: 2.1rem;
+			gap: 0.8rem;
+		}
+
+		.destination-media {
+			height: 35vh;
 		}
 	}
 </style>

@@ -24,6 +24,6 @@
 <HomeClubSection />
 <HomeCorporateSection />
 <HomeJournalSection />
-<ContactCTA />
 <HomeEventsSection />
+<ContactCTA />
 <Footer />

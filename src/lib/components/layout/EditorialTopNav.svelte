@@ -8,7 +8,6 @@
 
 	let {
 		quickLinks = [
-			{ label: 'Fleet', href: '/fleet' },
 			{ label: 'Contacts', href: '/#home-enquiry' }
 		]
 	}: Props = $props();

@@ -25,6 +25,9 @@
 			loading="lazy"
 			decoding="async"
 		/>
+		<p class="mt-3 text-[0.72rem] uppercase tracking-[0.14em] text-white/56">
+			George Town, Cayman Islands
+		</p>
 
 		<div class="mt-6 flex flex-wrap items-center justify-center gap-5 md:gap-8">
 			{#each navLinks as link}

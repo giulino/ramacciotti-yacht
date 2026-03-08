@@ -24,32 +24,6 @@
 			excerpt: "A reflection on why every charter is more than a voyage - it's a return.",
 			image: '/images/fleet/casagnola-heritage/casagnola-heritage-06.jpeg',
 			href: '/journal'
-		},
-		{
-			title: 'Partnership Highlight: The Chedi Muscat',
-			type: 'Partners',
-			date: 'February 18, 2026',
-			excerpt:
-				'A shared philosophy of discretion and design - from sea to shore.',
-			image: '/images/fleet/ferretti-860/ferretti-860-29.jpg',
-			href: '/journal'
-		},
-		{
-			title: 'The Caribbean Season Opens',
-			type: 'Voyages',
-			date: 'February 11, 2026',
-			excerpt: 'A glimpse into our winter calendar, from Antigua to St. Barth.',
-			image: '/images/destinations/CARAIBI1.jpg',
-			href: '/journal'
-		},
-		{
-			title: 'Behind the Circle',
-			type: "Founder's Notes",
-			date: 'February 7, 2026',
-			excerpt:
-				'The philosophy behind The Ramacciotti Club and what belonging really means.',
-			image: '/images/fleet/folgore-88/folgore-88-04.jpg',
-			href: '/journal'
 		}
 	];
 </script>
@@ -98,6 +72,10 @@
 			</a>
 		{/each}
 	</section>
+
+	<div class="journal-cta-wrap">
+		<a href="/journal" class="journal-pill">Read more</a>
+	</div>
 </section>
 
 <style>
@@ -180,10 +158,36 @@
 	.journal-grid {
 		max-width: 84rem;
 		margin: 0 auto;
-		padding: 0 clamp(1rem, 3vw, 2.6rem) clamp(2.8rem, 8vh, 5.6rem);
+		padding: 0 clamp(1rem, 3vw, 2.6rem);
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(0.9rem, 1.8vw, 1.2rem);
+	}
+
+	.journal-cta-wrap {
+		padding: 1.5rem clamp(1rem, 3vw, 2.6rem) clamp(2.8rem, 8vh, 5.6rem);
+		display: flex;
+		justify-content: center;
+	}
+
+	.journal-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid rgba(18, 22, 59, 0.22);
+		border-radius: 999px;
+		padding: 0.46rem 0.9rem;
+		font-family: var(--font-primary);
+		font-size: 0.72rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(18, 22, 59, 0.78);
+		transition: border-color 220ms ease, color 220ms ease;
+	}
+
+	.journal-pill:hover {
+		border-color: rgba(186, 154, 102, 0.78);
+		color: rgba(186, 154, 102, 0.95);
 	}
 
 	.journal-card {

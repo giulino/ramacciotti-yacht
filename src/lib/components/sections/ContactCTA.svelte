@@ -24,7 +24,7 @@
 				context="Home"
 				title="Request a private proposal"
 				subtitle="Tell us where you want to go and how you want it to feel. We will come back with a considered response."
-				variant="soft"
+				variant="light"
 			/>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 	.home-enquiry {
 		position: relative;
 		overflow: hidden;
-		background: #ffffff;
+		background: #f9f7f2;
 		color: #12163b;
 	}
 
@@ -42,7 +42,9 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: none;
+		background:
+			radial-gradient(1100px 520px at 0% -6%, rgba(255, 255, 255, 0.55), transparent 58%),
+			radial-gradient(840px 420px at 100% 105%, rgba(186, 154, 102, 0.08), transparent 62%);
 		pointer-events: none;
 	}
 

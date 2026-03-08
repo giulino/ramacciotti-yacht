@@ -8,6 +8,8 @@ export async function POST({ request, getClientAddress }) {
 				context?: string;
 				name?: string;
 				email?: string;
+				phonePrefix?: string;
+				phone?: string;
 				message?: string;
 				consent?: boolean;
 				consentVersion?: string;
@@ -26,11 +28,13 @@ export async function POST({ request, getClientAddress }) {
 	const context = body.context?.trim();
 	const name = body.name?.trim();
 	const email = body.email?.trim();
+	const phonePrefix = body.phonePrefix?.trim();
+	const phone = body.phone?.trim();
 	const message = body.message?.trim();
 	const consent = body.consent === true;
 	const consentVersion = body.consentVersion?.trim() || '2026-02';
 
-	if (!context || !name || !email || !message) {
+	if (!context || !name || !email || !phonePrefix || !phone || !message) {
 		return json({ error: 'All fields are required.' }, { status: 400 });
 	}
 
@@ -42,7 +46,7 @@ export async function POST({ request, getClientAddress }) {
 		return json({ error: 'Consent is required.' }, { status: 400 });
 	}
 
-	if (name.length > 120 || email.length > 160 || message.length > 3000) {
+	if (name.length > 120 || email.length > 160 || phonePrefix.length > 8 || phone.length > 40 || message.length > 3000) {
 		return json({ error: 'Input is too long.' }, { status: 400 });
 	}
 
@@ -50,6 +54,8 @@ export async function POST({ request, getClientAddress }) {
 		context,
 		name,
 		email,
+		phonePrefix,
+		phone,
 		message,
 		consent,
 		consentVersion,

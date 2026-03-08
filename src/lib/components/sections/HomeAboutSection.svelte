@@ -1,54 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 	let aboutTextSection: HTMLElement;
-	let aboutStatement: HTMLElement;
-
-	let aboutTextTween: gsap.core.Tween | null = null;
-
-	function initAboutTextReveal() {
-		aboutTextTween?.scrollTrigger?.kill();
-		aboutTextTween?.kill();
-
-		aboutTextTween = gsap.fromTo(
-			aboutStatement,
-			{ opacity: 0, y: 18 },
-			{
-				opacity: 1,
-				y: 0,
-				duration: 1.15,
-				ease: 'power2.out',
-				scrollTrigger: {
-					trigger: aboutTextSection,
-					start: 'top 90%',
-					toggleActions: 'play none none reverse'
-				}
-			}
-		);
-	}
-
-	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
-
-		const raf = requestAnimationFrame(() => {
-			initAboutTextReveal();
-		});
-
-		const onResize = () => {
-			initAboutTextReveal();
-		};
-
-		window.addEventListener('resize', onResize);
-
-		return () => {
-			cancelAnimationFrame(raf);
-			window.removeEventListener('resize', onResize);
-			aboutTextTween?.scrollTrigger?.kill();
-			aboutTextTween?.kill();
-		};
-	});
 </script>
 
 <section id="about" bind:this={aboutTextSection} class="home-about-text">
@@ -62,31 +13,7 @@
 	</a>
 	<div class="about-container">
 		<div class="about-layout">
-			<p bind:this={aboutStatement} class="about-statement">
-				<span class="about-brand">Ramacciotti Yachts</span>
-				is a
-				<span class="about-emphasis">boutique advisory house</span>
-				where the
-				<span class="about-emphasis">precision of engineering</span>
-				meets the
-				<span class="about-emphasis">timeless calm of the sea.</span>
-				From the Caribbean trade winds to the hidden coves of the Italian Riviera, we design journeys defined by exclusivity. Whether for families, founders, or leaders, our mission remains singular:
-				<span class="about-emphasis"
-					>Privacy, excellence,
-					<span class="about-normal">and</span>
-					the art of the voyage.</span
-				>
-			</p>
-
 			<div class="about-compass-wrap" aria-label="Ramacciotti philosophy pillars">
-				<img
-					class="about-compass-art"
-					src="/images/about/compass-rose.svg"
-					alt="Compass rose"
-					loading="lazy"
-					decoding="async"
-				/>
-
 				<article class="about-pillar about-pillar-boutique">
 					<h3 class="about-pillar-title">boutique</h3>
 					<p class="about-pillar-text">
@@ -154,88 +81,41 @@
 	}
 
 	.about-layout {
-		display: grid;
-		grid-template-columns: minmax(20rem, 1fr) minmax(22rem, 0.95fr);
-		gap: clamp(2rem, 4vw, 5rem);
-		align-items: start;
+		display: block;
 		margin-left: clamp(1.4rem, 2.4vw, 2.8rem);
-	}
-
-	.about-statement {
-		max-width: clamp(24rem, 38vw, 42rem);
-		min-height: calc(100vh - clamp(8.8rem, 15vh, 12rem));
-		font-family: var(--font-display);
-		font-size: clamp(1.85rem, 3.2vw, 3.4rem);
-		line-height: 1.07;
-		letter-spacing: 0.004em;
-		color: rgba(18, 22, 59, 0.96);
-		text-wrap: balance;
-		opacity: 0;
-		transform: translateY(18px);
-		will-change: opacity, transform;
-	}
-
-	.about-brand {
-		text-transform: uppercase;
-	}
-
-	.about-emphasis {
-		font-family: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
-		font-style: italic;
-		font-weight: 700;
-		font-size: 1.06em;
-		letter-spacing: -0.015em;
-		text-transform: none;
-	}
-
-	.about-normal {
-		font-style: normal;
-		font-weight: 400;
-		letter-spacing: 0.004em;
 	}
 
 	.about-compass-wrap {
 		position: relative;
-		width: min(100%, 44rem);
-		aspect-ratio: 1 / 1;
-		margin-inline: auto;
-	}
-
-	.about-compass-art {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: 61%;
-		height: 61%;
-		transform: translate(-50%, -50%);
-		object-fit: contain;
-		filter: drop-shadow(0 5px 14px rgba(17, 53, 111, 0.08));
+		width: min(100%, 72rem);
+		min-height: clamp(22rem, 52vw, 34rem);
+		margin-inline: 0 auto;
 	}
 
 	.about-pillar {
 		position: absolute;
-		width: 40%;
+		width: min(41%, 25rem);
 	}
 
 	.about-pillar-boutique {
 		left: 0;
-		top: 7%;
+		top: 4%;
 	}
 
 	.about-pillar-elegance {
 		right: 0;
-		top: 7%;
+		top: 4%;
 		text-align: right;
 	}
 
 	.about-pillar-tailored {
 		left: 0;
-		bottom: 7%;
+		bottom: 4%;
 	}
 
 	.about-pillar-discreet {
 		right: 0;
-		bottom: 7%;
+		bottom: 4%;
 		text-align: right;
 	}
 
@@ -271,16 +151,7 @@
 		}
 
 		.about-layout {
-			grid-template-columns: 1fr;
-			gap: 2.1rem;
 			margin-left: 0;
-		}
-
-		.about-statement {
-			max-width: 100%;
-			min-height: 0;
-			font-size: clamp(1.18rem, 5.2vw, 1.85rem);
-			line-height: 1.18;
 		}
 
 		.about-compass-wrap {
@@ -291,18 +162,6 @@
 			grid-template-columns: 1fr 1fr;
 			gap: 1rem;
 			align-items: start;
-		}
-
-		.about-compass-art {
-			position: relative;
-			left: auto;
-			top: auto;
-			transform: none;
-			width: min(16rem, 66vw);
-			height: auto;
-			grid-column: 1 / -1;
-			justify-self: center;
-			margin-bottom: 0.35rem;
 		}
 
 		.about-pillar {
@@ -321,6 +180,17 @@
 
 		.about-pillar-text {
 			font-size: 0.92rem;
+		}
+	}
+
+	@media (max-width: 720px) {
+		.about-compass-wrap {
+			grid-template-columns: 1fr;
+		}
+
+		.about-pillar {
+			padding: 1rem 0;
+			border-top: 1px solid rgba(18, 22, 59, 0.1);
 		}
 	}
 </style>

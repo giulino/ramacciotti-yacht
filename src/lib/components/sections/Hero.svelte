@@ -4,14 +4,6 @@
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import FullscreenMenu from '$lib/components/layout/FullscreenMenu.svelte';
 
-	const images = [
-		'/images/hero/casagnola-01.jpeg',
-		'/images/hero/casagnola-02.jpeg',
-		'/images/hero/casagnola-03.jpeg',
-		'/images/hero/casagnola-04.jpeg',
-		'/images/hero/casagnola-05.jpeg',
-		'/images/hero/casagnola-06.jpeg'
-	];
 	const menuLinks = [
 		{ label: 'Home', href: '/' },
 		{ label: 'About', href: '#about' },
@@ -21,23 +13,16 @@
 		{ label: 'Journal', href: '#journal-home' }
 	];
 
-	const IMAGE_ROTATION_MS = 5200;
-
 	let heroSection: HTMLElement;
 	let mediaPositioner: HTMLElement;
 	let mediaFrame: HTMLElement;
 	let heroHeader: HTMLElement;
 	let heroCopy: HTMLElement;
+	let heroVideo: HTMLVideoElement;
 
-	let activeImage = $state(0);
 	let menuOpen = $state(false);
-	let slideshowInterval: ReturnType<typeof setInterval>;
 	let timeline: gsap.core.Timeline | null = null;
 	let trigger: ScrollTrigger | null = null;
-
-	function rotateImage() {
-		activeImage = (activeImage + 1) % images.length;
-	}
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -52,14 +37,10 @@
 		trigger?.kill();
 
 		const mediaRect = mediaFrame.getBoundingClientRect();
-		const viewportW = window.innerWidth;
 		const viewportH = window.innerHeight;
-
-		const scaleX = viewportW / mediaRect.width;
-		const scaleY = viewportH / mediaRect.height;
 		const mediaCenterY = mediaRect.top + mediaRect.height / 2;
 		const viewportCenterY = viewportH / 2;
-		const translateY = viewportCenterY - mediaCenterY;
+		const translateY = (viewportCenterY - mediaCenterY) * 0.82;
 
 		timeline = gsap.timeline({ paused: true });
 		timeline
@@ -76,9 +57,17 @@
 				mediaFrame,
 				{
 					y: translateY,
-					scaleX,
-					scaleY,
-					borderRadius: 0,
+					scale: 1,
+					borderRadius: 0.42,
+					ease: 'none',
+					duration: 1
+				},
+				0
+			)
+			.to(
+				heroVideo,
+				{
+					scale: 1.08,
 					ease: 'none',
 					duration: 1
 				},
@@ -87,7 +76,7 @@
 			.to(
 				mediaFrame,
 				{
-					boxShadow: '0 0 0 rgba(0,0,0,0)',
+					boxShadow: '0 26px 56px rgba(0,0,0,0.1)',
 					ease: 'none',
 					duration: 0.6
 				},
@@ -107,7 +96,7 @@
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
-		slideshowInterval = setInterval(rotateImage, IMAGE_ROTATION_MS);
+		heroVideo?.play().catch(() => {});
 
 		const raf = requestAnimationFrame(() => {
 			initScrollAnimation();
@@ -120,7 +109,6 @@
 		window.addEventListener('resize', onResize);
 
 		return () => {
-			clearInterval(slideshowInterval);
 			cancelAnimationFrame(raf);
 			window.removeEventListener('resize', onResize);
 			timeline?.kill();
@@ -185,7 +173,6 @@
 			</a>
 
 			<nav class="hero-quick-links" aria-label="Quick links">
-				<a href="#fleet-overview">Fleet</a>
 				<a href="#home-enquiry">Contacts</a>
 			</nav>
 		</header>
@@ -195,20 +182,23 @@
 				<span class="hero-title-italic">The Art</span>
 				<span>of Yacht Chartering</span>
 			</h1>
-			<a href="#home-enquiry" class="hero-cta">Begin your journey</a>
+			<a href="#fleet-overview" class="hero-cta">Discover the fleet</a>
 		</div>
 
 		<div bind:this={mediaPositioner} class="hero-media-positioner">
 			<div bind:this={mediaFrame} class="hero-media-frame">
-				{#each images as src, i}
-					<img
-						src={src}
-						alt="Heritage yacht detail"
-						class="hero-media-image {i === activeImage ? 'is-active' : ''}"
-						loading={i === 0 ? 'eager' : 'lazy'}
-						decoding="async"
-					/>
-				{/each}
+				<video
+					bind:this={heroVideo}
+					class="hero-media-video"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="auto"
+					aria-label="Ramacciotti Yachts hero film"
+				>
+					<source src="/videos/video.mov" type="video/quicktime" />
+				</video>
 			</div>
 		</div>
 	</div>
@@ -403,20 +393,15 @@
 		background: #d8d8d8;
 	}
 
-	.hero-media-image {
+	.hero-media-video {
 		position: absolute;
 		inset: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		opacity: 0;
-		transform: scale(1.02);
-		transition: opacity 1650ms ease, transform 5800ms ease-out;
-	}
-
-	.hero-media-image.is-active {
-		opacity: 1;
-		transform: scale(1.08);
+		transform: scale(1.01);
+		transform-origin: center center;
+		will-change: transform;
 	}
 
 	@media (max-width: 1100px) {

@@ -9,7 +9,6 @@
 	</a>
 
 	<section class="club-intro">
-		<p class="club-intro-kicker">Ramacciotti Club</p>
 		<h3>Belonging begins when the voyage ends.</h3>
 		<p>
 			Ramacciotti Club is the natural continuation of our voyages — a private circle reserved for those who
@@ -37,7 +36,7 @@
 				Each journey deepens the connection — every return feels like being welcomed back into something
 				personal.
 			</p>
-			<a href="/club" class="club-feature-cta">Enquire about the Founders’ Circle</a>
+			<a href="/club" class="club-feature-cta">Discover the Club</a>
 		</div>
 	</section>
 
@@ -77,17 +76,8 @@
 		text-align: center;
 	}
 
-	.club-intro-kicker {
-		margin: 0;
-		font-family: var(--font-primary);
-		font-size: clamp(0.74rem, 0.92vw, 0.88rem);
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: rgba(16, 24, 51, 0.68);
-	}
-
 	.club-intro h3 {
-		margin: 0.62rem 0 0;
+		margin: 0;
 		font-family: var(--font-display);
 		font-size: clamp(2rem, 5vw, 4rem);
 		line-height: 0.96;

@@ -9,7 +9,7 @@
 		<header class="events-header">
 			<div>
 				<p class="events-kicker">Events</p>
-				<h2>Next Boat Shows</h2>
+				<h2>Upcoming Events</h2>
 			</div>
 			<a href="/journal" class="events-pill">View Journal</a>
 		</header>
@@ -50,7 +50,7 @@
 
 <style>
 	.home-events {
-		background: #f9f7f2;
+		background: #ffffff;
 		color: #12163b;
 	}
 

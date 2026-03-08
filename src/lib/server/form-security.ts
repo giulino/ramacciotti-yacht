@@ -2,6 +2,8 @@ export interface InquiryPayload {
 	context: string;
 	name: string;
 	email: string;
+	phonePrefix: string;
+	phone: string;
 	message: string;
 	consent: boolean;
 	consentVersion: string;

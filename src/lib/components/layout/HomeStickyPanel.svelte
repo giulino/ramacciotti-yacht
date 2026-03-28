@@ -8,13 +8,11 @@
 		{ label: 'About', href: '#about' },
 		{ label: 'Fleet', href: '#fleet-overview' },
 		{ label: 'The Club', href: '#club' },
-		{ label: 'Corporate', href: '#corporate-circle' },
 		{ label: 'Journal', href: '#journal-home' }
 	];
 
 	let isVisible = $state(false);
 	let hasFullscreenSectionView = $state(false);
-	let isInCorporateSection = $state(false);
 	let isInDestinationsSection = $state(false);
 	let isInDestinationsIntro = $state(false);
 	let isScrollActive = $state(false);
@@ -22,7 +20,6 @@
 	const revealOffset = 108;
 	const scrollIdleDelayMs = 260;
 	const fullscreenCoverageThreshold = 0.88;
-	const corporateCoverageThreshold = 0.52;
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -61,11 +58,10 @@
 
 	onMount(() => {
 		const revealTarget = document.getElementById('about');
-		const corporateSection = document.getElementById('corporate-circle');
 		const destinationsSection = document.getElementById('destinations');
 		const trackedSections = Array.from(
 			document.querySelectorAll<HTMLElement>(
-				'#about, .fleet-stage, #destinations, #club, #corporate-circle, #journal-home, #home-enquiry'
+				'#about, .fleet-stage, #destinations, #club, #journal-home, #home-enquiry'
 			)
 		);
 		let scrollIdleTimer: ReturnType<typeof setTimeout> | null = null;
@@ -89,17 +85,6 @@
 		const updateVisibility = () => {
 			isVisible = revealTarget.getBoundingClientRect().top <= revealOffset;
 			updateFullscreenView();
-
-			if (corporateSection) {
-				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-				const rect = corporateSection.getBoundingClientRect();
-				const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-				const clampedVisibleHeight = Math.max(0, visibleHeight);
-				const viewportCoverage = clampedVisibleHeight / viewportHeight;
-				isInCorporateSection = viewportCoverage >= corporateCoverageThreshold;
-			} else {
-				isInCorporateSection = false;
-			}
 
 			if (destinationsSection) {
 				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -149,8 +134,8 @@
 </script>
 
 <div
-	class="home-sticky-panel {isVisible && !isInCorporateSection && !isInDestinationsIntro && (isInDestinationsSection || !hasFullscreenSectionView || isScrollActive || menuOpen) ? 'is-visible' : ''}"
-	aria-hidden={!(isVisible && !isInCorporateSection && !isInDestinationsIntro && (isInDestinationsSection || !hasFullscreenSectionView || isScrollActive || menuOpen))}
+	class="home-sticky-panel {isVisible && !isInDestinationsIntro && (isInDestinationsSection || !hasFullscreenSectionView || isScrollActive || menuOpen) ? 'is-visible' : ''}"
+	aria-hidden={!(isVisible && !isInDestinationsIntro && (isInDestinationsSection || !hasFullscreenSectionView || isScrollActive || menuOpen))}
 >
 	<div class="home-sticky-panel__bar">
 		<button

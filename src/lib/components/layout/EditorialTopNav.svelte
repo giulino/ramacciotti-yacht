@@ -17,7 +17,6 @@
 		{ label: 'About', href: '/about' },
 		{ label: 'Fleet', href: '/fleet' },
 		{ label: 'The Club', href: '/club' },
-		{ label: 'Corporate', href: '/corporate' },
 		{ label: 'Journal', href: '/journal' }
 	];
 

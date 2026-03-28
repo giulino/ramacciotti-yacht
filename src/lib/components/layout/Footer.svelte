@@ -6,7 +6,6 @@
 		{ label: 'About', href: '/#about' },
 		{ label: 'Fleet', href: '/#fleet-overview' },
 		{ label: 'The Club', href: '/#club' },
-		{ label: 'Corporate', href: '/#corporate-circle' },
 		{ label: 'Journal', href: '/#journal-home' }
 	];
 

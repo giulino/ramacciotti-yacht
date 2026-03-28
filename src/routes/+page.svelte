@@ -6,7 +6,6 @@
 	import HomeDestinationsSection from '$lib/components/sections/HomeDestinationsSection.svelte';
 	import HomeFleetSection from '$lib/components/sections/HomeFleetSection.svelte';
 	import HomeClubSection from '$lib/components/sections/HomeClubSection.svelte';
-	import HomeCorporateSection from '$lib/components/sections/HomeCorporateSection.svelte';
 	import HomeJournalSection from '$lib/components/sections/HomeJournalSection.svelte';
 	import ContactCTA from '$lib/components/sections/ContactCTA.svelte';
 	import HomeEventsSection from '$lib/components/sections/HomeEventsSection.svelte';
@@ -22,7 +21,6 @@
 <HomeFleetSection />
 <HomeDestinationsSection />
 <HomeClubSection />
-<HomeCorporateSection />
 <HomeJournalSection />
 <HomeEventsSection />
 <ContactCTA />

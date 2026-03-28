@@ -174,6 +174,27 @@
 	}
 
 	@media (max-width: 980px) {
+		.club-corner-logo {
+			top: 0.8rem;
+			left: 0.8rem;
+			width: clamp(4.2rem, 15vw, 5.8rem);
+		}
+
+		.club-intro {
+			padding-top: clamp(4.6rem, 10vw, 6rem);
+		}
+
+		.club-intro h3 {
+			font-size: clamp(2rem, 7vw, 3.2rem);
+			line-height: 1.02;
+		}
+
+		.club-intro p {
+			margin-top: 1rem;
+			font-size: 1rem;
+			line-height: 1.62;
+		}
+
 		.club-feature {
 			grid-template-columns: 1fr;
 		}
@@ -184,6 +205,37 @@
 
 		.club-feature-media {
 			min-height: 64vh;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.club-corner-logo {
+			top: 0.65rem;
+			left: 0.65rem;
+			width: clamp(3.5rem, 18vw, 4.5rem);
+		}
+
+		.club-intro {
+			padding-top: 4rem;
+			padding-inline: 0.95rem;
+			padding-bottom: 2rem;
+		}
+
+		.club-intro h3 {
+			font-size: clamp(1.7rem, 9vw, 2.6rem);
+		}
+
+		.club-intro p {
+			font-size: 0.96rem;
+			line-height: 1.58;
+		}
+
+		.club-feature {
+			padding-inline: 0.95rem;
+		}
+
+		.club-feature-media {
+			min-height: 42vh;
 		}
 	}
 </style>

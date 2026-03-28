@@ -6,32 +6,51 @@
 		name: string;
 		length: string;
 		guests: string;
-		style: string;
-		cruising: string;
+		crew: string;
+		speed: string;
+		location: string;
 		images: string[];
 	};
 
 	const vessels: Vessel[] = [
 		{
+			name: 'AB 145',
+			length: '146 ft',
+			guests: '10 guests',
+			crew: '7 crew',
+			speed: '42 kn',
+			location: 'Mediterranean',
+			images: [
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/AB-145/P1Prod_Miramira_DJI-01.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/AB-145/P1Prod_Miramira_DJI-06.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/AB-145/P1Prod_Miramira_DJI-07.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/AB-145/P1Prod_Miramira_DJI-09.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/AB-145/P1Prod_Miramira_DJI-15.jpg'
+			]
+		},
+		{
 			name: 'Riva Folgore 88',
 			length: '88 ft',
-			guests: '8 guests',
-			style: 'Sport flybridge',
-			cruising: 'Mediterranean day and multi-day charters',
+			guests: '12 guests',
+			crew: '3 crew',
+			speed: '38 kn',
+			location: 'Mediterranean',
 			images: [
-				'/images/fleet/folgore-88/folgore-88-02.jpg',
-				'/images/fleet/folgore-88/folgore-88-03.jpg',
-				'/images/fleet/folgore-88/folgore-88-04.jpg',
-				'/images/fleet/folgore-88/folgore-88-05.jpg',
-				'/images/fleet/folgore-88/folgore-88-06.jpg'
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_1.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_10.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_39.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_6.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_7.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/RIVA-FOLGORE-88/Folgore99%20%28Space%20cowboy%29_8.jpg'
 			]
 		},
 		{
 			name: 'Casagnola Heritage',
 			length: '85 ft',
 			guests: '8 guests',
-			style: 'Classic gentleman yacht',
-			cruising: 'Founder-led coastal itineraries',
+			crew: '4 crew',
+			speed: '12 kn',
+			location: 'Italian Riviera',
 			images: [
 				'/images/fleet/casagnola-heritage/casagnola-heritage-01.jpeg',
 				'/images/fleet/casagnola-heritage/casagnola-heritage-02.jpeg',
@@ -45,37 +64,58 @@
 			name: 'Ferretti 860',
 			length: '86 ft',
 			guests: '8 guests',
-			style: 'Flybridge motor yacht',
-			cruising: 'Long-weekend and hosted escapes',
+			crew: '4 crew',
+			speed: '31 kn',
+			location: 'Mediterranean',
 			images: [
-				'/images/fleet/ferretti-860/ferretti-860-16.jpg',
-				'/images/fleet/ferretti-860/ferretti-860-17.jpg',
-				'/images/fleet/ferretti-860/ferretti-860-29.jpg'
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-860/Ferretti%20860_1.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-860/Ferretti%20860_2.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-860/Ferretti%20860_4.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-860/Ferretti%20860_6.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-860/Ferretti%20860_8.jpg'
 			]
 		},
 		{
-			name: 'Magnum 40',
-			length: '40 ft',
-			guests: '6 guests',
-			style: 'Open performance cruiser',
-			cruising: 'Fast day charters and island transfers',
-			images: ['/images/fleet/magnum-40/magnum-40-01.jpg']
+			name: 'Ferretti 630',
+			length: '63 ft',
+			guests: '12 guests',
+			crew: '2 crew',
+			speed: '35 kn',
+			location: 'Mediterranean',
+			images: [
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-630/Ferretti630-0.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-630/Ferretti630-1.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-630/Ferretti630-3.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-630/Ferretti630-9.jpg'
+			]
 		},
 		{
 			name: 'Pershing 70',
 			length: '70 ft',
 			guests: '6 guests',
-			style: 'Performance coupé',
-			cruising: 'Fast island hopping and day charters',
-			images: ['/images/fleet/pershing-70/Pershing_35.jpg', '/images/fleet/pershing-70/Pershing_36.jpg']
+			crew: '2 crew',
+			speed: '46 kn',
+			location: 'Mediterranean',
+			images: [
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/PERSHING-70/Pershing_27.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/PERSHING-70/Pershing_29.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/PERSHING-70/Pershing_3.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/PERSHING-70/Pershing_31.jpg'
+			]
 		},
 		{
-			name: 'Van Dutch 40',
-			length: '40 ft',
-			guests: '6 guests',
-			style: 'Open day cruiser',
-			cruising: 'Riviera day charters and transfers',
-			images: ['/images/fleet/van-dutch-40/van-dutch-40-01.jpg', '/images/fleet/van-dutch-40/van-dutch-40-02.jpg']
+			name: 'Ferretti 681',
+			length: '69 ft',
+			guests: '12 guests',
+			crew: '2 crew',
+			speed: '34 kn',
+			location: 'Mediterranean',
+			images: [
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_2.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_3.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_6.jpg',
+				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_7.jpg'
+			]
 		}
 	];
 
@@ -135,8 +175,9 @@
 			<div class="fleet-gallery__details">
 				<p><span>Length</span>{vessel.length}</p>
 				<p><span>Guests</span>{vessel.guests}</p>
-				<p><span>Style</span>{vessel.style}</p>
-				<p><span>Cruising</span>{vessel.cruising}</p>
+				<p><span>Crew</span>{vessel.crew}</p>
+				<p><span>Speed</span>{vessel.speed}</p>
+				<p><span>Location</span>{vessel.location}</p>
 			</div>
 		</div>
 
@@ -298,13 +339,13 @@
 		display: grid;
 		gap: 0.15rem;
 		font-family: var(--font-primary);
-		font-size: 0.92rem;
+		font-size: 1.06rem;
 		line-height: 1.45;
 		text-align: right;
 	}
 
 	.fleet-gallery__details span {
-		font-size: 0.68rem;
+		font-size: 0.78rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: rgba(247, 248, 252, 0.62);

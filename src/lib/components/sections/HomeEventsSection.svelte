@@ -14,23 +14,17 @@
 			<a href="/journal" class="events-pill">View Journal</a>
 		</header>
 
-		<div class="events-list" class:is-hovering={activeEventIndex !== null}>
+	<div class="events-list" class:is-hovering={activeEventIndex !== null}>
 			{#each events as event, index}
-				<a
-					href={`/events/${event.slug}`}
+				<div
 					class:event-active={activeEventIndex === index}
 					class="event-row"
+					role="group"
 					aria-label={`${event.title}, ${event.location}`}
 					onmouseenter={() => {
 						activeEventIndex = index;
 					}}
 					onmouseleave={() => {
-						activeEventIndex = null;
-					}}
-					onfocus={() => {
-						activeEventIndex = index;
-					}}
-					onblur={() => {
 						activeEventIndex = null;
 					}}
 				>
@@ -42,7 +36,7 @@
 						<h3>{event.title}</h3>
 						<p>{event.location}</p>
 					</div>
-				</a>
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -116,7 +110,6 @@
 		align-items: start;
 		padding: clamp(1.25rem, 2.8vh, 2rem) 0;
 		border-bottom: 1px solid rgba(18, 22, 59, 0.14);
-		cursor: pointer;
 		transition:
 			opacity 220ms ease,
 			transform 220ms ease,
@@ -202,4 +195,5 @@
 			padding-top: 0;
 		}
 	}
+
 </style>

@@ -10,8 +10,7 @@
 
 	const destinations: Destination[] = [
 		{
-			name: 'The Caribbean',
-			tagline: 'The Caribbean — winter, reimagined.',
+			tagline: 'The Caribbean',
 			bestSeason: 'December - April',
 			description:
 				'A collection of islands shaped by light and rhythm — St. Barth, Antigua, the Bahamas, Cayman Islands. Warm winds, long lunches on deck, evenings of quiet laughter under starlit skies. A winter chapter written in turquoise.',
@@ -19,8 +18,7 @@
 			image: '/images/destinations/CARAIBI1.jpg'
 		},
 		{
-			name: 'Sardinia & Costa Smeralda',
-			tagline: 'Sardinia — where summer becomes an art form.',
+			tagline: 'Sardinia',
 			bestSeason: 'June - September',
 			description:
 				'Days of barefoot elegance between hidden coves and the unmistakable hum of Porto Cervo. The scent of the sea, Italian music in the distance, and the timeless ease of Mediterranean living. The heart of Mediterranean grace.',
@@ -28,8 +26,7 @@
 			image: '/images/destinations/SARDINIA2.jpg'
 		},
 		{
-			name: 'The Ligurian Riviera',
-			tagline: 'Liguria — where color meets the sea.',
+			tagline: 'Liguria',
 			bestSeason: 'May - October',
 			description:
 				'Sail along a coastline painted with charm — Portofino, Camogli, Cinque Terre. Mornings of espresso and sea spray, evenings of lights flickering on the harbor. A voyage of light, cliffs, and quiet Italian rhythm.',
@@ -151,7 +148,7 @@
 		display: grid;
 		grid-template-columns: minmax(20rem, 1.05fr) minmax(20rem, 0.95fr);
 		align-items: stretch;
-		min-height: min(66vh, 42rem);
+		min-height: min(54vh, 34rem);
 	}
 
 	.destination-block.is-reversed {
@@ -174,7 +171,7 @@
 
 	.destination-copy {
 		background: #f8f6f1;
-		padding: clamp(1rem, 2.5vw, 2.2rem);
+		padding: clamp(0.9rem, 2vw, 1.6rem);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -245,11 +242,11 @@
 		}
 
 		.destination-media {
-			height: 44vh;
+			height: 32vh;
 		}
 
 		.destination-copy {
-			padding: 1.25rem 1rem 1.4rem;
+			padding: 1rem 0.95rem 1.1rem;
 		}
 
 		.destination-copy h3 {
@@ -284,7 +281,7 @@
 		}
 
 		.destination-media {
-			height: 35vh;
+			height: 26vh;
 		}
 	}
 </style>

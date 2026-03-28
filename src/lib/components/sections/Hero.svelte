@@ -24,6 +24,22 @@
 	let timeline: gsap.core.Timeline | null = null;
 	let trigger: ScrollTrigger | null = null;
 
+	function clamp(value: number, min: number, max: number) {
+		return Math.min(max, Math.max(min, value));
+	}
+
+	function lerp(start: number, end: number, amount: number) {
+		return start + (end - start) * amount;
+	}
+
+	function segmentProgress(progress: number, start: number, end: number) {
+		return clamp((progress - start) / (end - start), 0, 1);
+	}
+
+	function insetClip(top: number, right: number, bottom: number, left: number, radius: number) {
+		return `inset(${top}px ${right}px ${bottom}px ${left}px round ${Math.max(radius, 0)}px)`;
+	}
+
 	function toggleMenu() {
 		menuOpen = !menuOpen;
 	}
@@ -33,33 +49,105 @@
 	}
 
 	function initScrollAnimation() {
+		if (!heroSection || !mediaPositioner || !mediaFrame || !heroHeader || !heroCopy) {
+			return;
+		}
+
 		timeline?.kill();
 		trigger?.kill();
 
-		const mediaRect = mediaFrame.getBoundingClientRect();
+		const viewportW = window.innerWidth;
 		const viewportH = window.innerHeight;
-		const mediaCenterY = mediaRect.top + mediaRect.height / 2;
-		const viewportCenterY = viewportH / 2;
-		const translateY = (viewportCenterY - mediaCenterY) * 0.82;
+		const initialWidth = Math.min(viewportW * 0.9, 1680);
+		const initialHeight = Math.min(viewportH * 0.48, 760);
+		const insetLeft = Math.max((viewportW - initialWidth) * 0.5, 18);
+		const insetRight = insetLeft;
+		const insetBottom = clamp(viewportH * 0.008, 4, 10);
+		const insetTop = Math.max(viewportH - initialHeight - insetBottom, 280);
+		const initialClip = {
+			top: insetTop,
+			right: insetRight,
+			bottom: insetBottom,
+			left: insetLeft
+		};
+		const targetVideoScale = 1.035;
+		const triggerDistance = '+=120%';
+
+		gsap.set(mediaPositioner, {
+			scale: 0.992,
+			clipPath: insetClip(initialClip.top, initialClip.right, initialClip.bottom, initialClip.left, 30),
+			boxShadow: '0 18px 42px rgba(0, 0, 0, 0.12)'
+		});
+		gsap.set(heroVideo, { scale: 1.01 });
+		gsap.set(heroHeader, { y: 0, autoAlpha: 1 });
+		gsap.set(heroCopy, { y: 0, autoAlpha: 1 });
 
 		timeline = gsap.timeline({ paused: true });
 		timeline
 			.to(
 				heroHeader,
 				{
-					y: -130,
+					y: -42,
+					autoAlpha: 0,
 					ease: 'none',
-					duration: 0.12
+					duration: 0.36
 				},
 				0
 			)
 			.to(
-				mediaFrame,
+				heroCopy,
 				{
-					y: translateY,
-					scale: 1,
-					borderRadius: 0.42,
+					y: -34,
+					autoAlpha: 0,
 					ease: 'none',
+					duration: 0.44
+				},
+				0.05
+			)
+			.to(
+				mediaPositioner,
+				{
+					ease: 'none',
+					duration: 1,
+					onUpdate() {
+						const progress = this.progress();
+						const stageOne = segmentProgress(progress, 0, 0.33);
+						const stageTwo = segmentProgress(progress, 0.33, 0.66);
+						const stageThree = segmentProgress(progress, 0.66, 1);
+						const top =
+							lerp(initialClip.top, initialClip.top * 0.8, stageOne) +
+							lerp(0, -initialClip.top * 0.36, stageTwo) +
+							lerp(0, -initialClip.top * 0.44, stageThree);
+						const right =
+							lerp(initialClip.right, initialClip.right * 0.78, stageOne) +
+							lerp(0, -initialClip.right * 0.33, stageTwo) +
+							lerp(0, -initialClip.right * 0.45, stageThree);
+						const bottom =
+							lerp(initialClip.bottom, initialClip.bottom * 0.76, stageOne) +
+							lerp(0, -initialClip.bottom * 0.34, stageTwo) +
+							lerp(0, -initialClip.bottom * 0.42, stageThree);
+						const left =
+							lerp(initialClip.left, initialClip.left * 0.78, stageOne) +
+							lerp(0, -initialClip.left * 0.33, stageTwo) +
+							lerp(0, -initialClip.left * 0.45, stageThree);
+						const radius =
+							lerp(30, 24, stageOne) + lerp(0, -12, stageTwo) + lerp(0, -12, stageThree);
+						const shellScale =
+							lerp(0.992, 0.996, stageOne) + lerp(0, 0.002, stageTwo) + lerp(0, 0.01, stageThree);
+
+						gsap.set(mediaPositioner, {
+							scale: shellScale,
+							clipPath: insetClip(top, right, bottom, left, radius)
+						});
+					}
+				},
+				0
+			)
+			.to(
+				mediaPositioner,
+				{
+					ease: 'none',
+					boxShadow: '0 0 0 rgba(0,0,0,0)',
 					duration: 1
 				},
 				0
@@ -67,27 +155,19 @@
 			.to(
 				heroVideo,
 				{
-					scale: 1.08,
+					scale: targetVideoScale,
 					ease: 'none',
 					duration: 1
 				},
 				0
-			)
-			.to(
-				mediaFrame,
-				{
-					boxShadow: '0 26px 56px rgba(0,0,0,0.1)',
-					ease: 'none',
-					duration: 0.6
-				},
-				0
 			);
 
-		trigger = ScrollTrigger.create({
+			trigger = ScrollTrigger.create({
 			trigger: heroSection,
 			start: 'top top',
-			end: '+=65%',
-			scrub: 0.72,
+			end: triggerDistance,
+			scrub: 0.45,
+			invalidateOnRefresh: true,
 			onUpdate: (self) => {
 				timeline?.progress(self.progress);
 			}
@@ -96,7 +176,24 @@
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
-		heroVideo?.play().catch(() => {});
+
+		const attemptPlayback = () => {
+			if (!heroVideo) {
+				return;
+			}
+
+			heroVideo.play().catch(() => {});
+		};
+
+		if (heroVideo) {
+			heroVideo.muted = true;
+			heroVideo.defaultMuted = true;
+			heroVideo.playsInline = true;
+			heroVideo.setAttribute('webkit-playsinline', 'true');
+			heroVideo.load();
+		}
+
+		attemptPlayback();
 
 		const raf = requestAnimationFrame(() => {
 			initScrollAnimation();
@@ -106,10 +203,15 @@
 			initScrollAnimation();
 		};
 
+		heroVideo?.addEventListener('loadeddata', attemptPlayback);
+		heroVideo?.addEventListener('canplay', attemptPlayback);
+
 		window.addEventListener('resize', onResize);
 
 		return () => {
 			cancelAnimationFrame(raf);
+			heroVideo?.removeEventListener('loadeddata', attemptPlayback);
+			heroVideo?.removeEventListener('canplay', attemptPlayback);
 			window.removeEventListener('resize', onResize);
 			timeline?.kill();
 			trigger?.kill();
@@ -197,7 +299,10 @@
 					preload="auto"
 					aria-label="Ramacciotti Yachts hero film"
 				>
-					<source src="/videos/video.mov" type="video/quicktime" />
+					<source
+						src="https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/VIDEO/video%20%281%29.mp4"
+						type="video/mp4"
+					/>
 				</video>
 			</div>
 		</div>
@@ -211,7 +316,7 @@
 	.hero-shell {
 		--brand-blue: #12163b;
 		position: relative;
-		height: 300vh;
+		height: 220vh;
 		background: #efefef;
 	}
 
@@ -227,7 +332,10 @@
 		position: sticky;
 		top: 0;
 		height: 100vh;
+		height: 100svh;
+		height: 100dvh;
 		overflow: hidden;
+		isolation: isolate;
 	}
 
 	.hero-top-nav {
@@ -340,7 +448,7 @@
 		font-weight: 400;
 		line-height: 0.95;
 		letter-spacing: 0.005em;
-		color: rgba(46, 46, 46, 0.88);
+		color: rgba(18, 22, 59, 0.96);
 	}
 
 	.hero-title span {
@@ -374,34 +482,35 @@
 
 	.hero-media-positioner {
 		position: absolute;
-		top: clamp(55vh, 58vh, 60vh);
-		left: 50%;
+		inset: 0;
 		z-index: 10;
-		transform: translateX(-50%);
-		width: min(90vw, 2360px);
+		overflow: hidden;
+		clip-path: inset(40vh 5vw 10vh 5vw round 30px);
+		transform-origin: center center;
+		box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
+		pointer-events: none;
+		will-change: transform, clip-path, box-shadow;
+		backface-visibility: hidden;
 	}
 
 	.hero-media-frame {
-		position: relative;
-		width: 100%;
-		height: min(53vh, 760px);
+		position: absolute;
+		inset: 0;
 		overflow: hidden;
-		border-radius: 0.42rem;
-		transform-origin: center center;
-		box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
-		will-change: transform, border-radius;
 		background: #d8d8d8;
 	}
 
 	.hero-media-video {
 		position: absolute;
 		inset: 0;
+		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		transform: scale(1.01);
 		transform-origin: center center;
 		will-change: transform;
+		backface-visibility: hidden;
 	}
 
 	@media (max-width: 1100px) {
@@ -436,12 +545,7 @@
 		}
 
 		.hero-media-positioner {
-			top: 61vh;
-			width: min(94vw, 1200px);
-		}
-
-		.hero-media-frame {
-			height: min(46vh, 540px);
+			clip-path: inset(43vh 3vw 8vh 3vw round 24px);
 		}
 	}
 </style>

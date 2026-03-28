@@ -1,5 +1,31 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	let aboutTextSection: HTMLElement;
+	let isVisible = $state(false);
+
+	onMount(() => {
+		if (!aboutTextSection) {
+			return;
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries[0]?.isIntersecting) {
+					isVisible = true;
+					observer.disconnect();
+				}
+			},
+			{
+				threshold: 0.28,
+				rootMargin: '0px 0px -10% 0px'
+			}
+		);
+
+		observer.observe(aboutTextSection);
+
+		return () => observer.disconnect();
+	});
 </script>
 
 <section id="about" bind:this={aboutTextSection} class="home-about-text">
@@ -11,37 +37,22 @@
 			decoding="async"
 		/>
 	</a>
+
 	<div class="about-container">
-		<div class="about-layout">
-			<div class="about-compass-wrap" aria-label="Ramacciotti philosophy pillars">
-				<article class="about-pillar about-pillar-boutique">
-					<h3 class="about-pillar-title">boutique</h3>
-					<p class="about-pillar-text">
-						We intentionally limit our seasonal charters to preserve quality, focus, and care.
-					</p>
-				</article>
-
-				<article class="about-pillar about-pillar-elegance">
-					<h3 class="about-pillar-title">italian elegance</h3>
-					<p class="about-pillar-text">
-						A calm balance of refinement, authenticity, and effortless style, felt in every detail.
-					</p>
-				</article>
-
-				<article class="about-pillar about-pillar-tailored">
-					<h3 class="about-pillar-title">tailored</h3>
-					<p class="about-pillar-text">
-						Each journey is custom-built around your rhythm, priorities, and personal expectations.
-					</p>
-				</article>
-
-				<article class="about-pillar about-pillar-discreet">
-					<h3 class="about-pillar-title">discreet</h3>
-					<p class="about-pillar-text">
-						Confidentiality is a standard: every step of your voyage remains private and protected.
-					</p>
-				</article>
-			</div>
+		<div class:about-copy-visible={isVisible} class="about-copy">
+			<p>
+				Ramacciotti Yachts is a boutique charter and advisory house dedicated to creating refined
+				private and corporate experiences across the Caribbean and the Italian Riviera.
+			</p>
+			<p>
+				Beyond charter services, we design journeys defined by precision and the timeless calm of the
+				sea. Every element, from the yacht itself to the atmosphere onboard, is crafted to reflect
+				your lifestyle and expectations.
+			</p>
+			<p>
+				Our experienced team curates each voyage with care, delivering the same level of dedication
+				whether for families, founders, or corporate leaders seeking privacy and excellence.
+			</p>
 		</div>
 	</div>
 </section>
@@ -50,11 +61,10 @@
 	.home-about-text {
 		--corner-left: clamp(1rem, 2.6vw, 2.2rem);
 		--corner-size: clamp(2.45rem, 3.5vw, 3.3rem);
-		--corner-gap: clamp(0.75rem, 1.2vw, 1.2rem);
 		position: relative;
 		background: #fff;
 		min-height: 100vh;
-		padding: clamp(4.2rem, 8vh, 6.4rem) 0 clamp(4.8rem, 10vh, 8.8rem);
+		padding: clamp(2.8rem, 5.8vh, 4.4rem) 0 clamp(0.6rem, 1.8vh, 1.2rem);
 	}
 
 	.about-text-corner-logo {
@@ -75,66 +85,43 @@
 	}
 
 	.about-container {
-		width: min(100% - 1.6rem, 95rem);
-		margin-left: calc(var(--corner-left) + var(--corner-size) + var(--corner-gap) + clamp(0.8rem, 1.6vw, 1.4rem));
-		margin-right: auto;
+		width: min(100% - 2rem, 84rem);
+		margin: 0 auto;
+		padding-inline: clamp(1rem, 2vw, 2rem);
 	}
 
-	.about-layout {
-		display: block;
-		margin-left: clamp(1.4rem, 2.4vw, 2.8rem);
+	.about-copy {
+		display: flex;
+		min-height: calc(100vh - clamp(5.2rem, 7vh, 6.2rem));
+		max-width: 62rem;
+		margin: 0 auto;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.9s ease-out,
+			transform 0.9s ease-out;
+		text-align: center;
 	}
 
-	.about-compass-wrap {
-		position: relative;
-		width: min(100%, 72rem);
-		min-height: clamp(22rem, 52vw, 34rem);
-		margin-inline: 0 auto;
+	.about-copy-visible {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
-	.about-pillar {
-		position: absolute;
-		width: min(41%, 25rem);
-	}
-
-	.about-pillar-boutique {
-		left: 0;
-		top: 4%;
-	}
-
-	.about-pillar-elegance {
-		right: 0;
-		top: 4%;
-		text-align: right;
-	}
-
-	.about-pillar-tailored {
-		left: 0;
-		bottom: 4%;
-	}
-
-	.about-pillar-discreet {
-		right: 0;
-		bottom: 4%;
-		text-align: right;
-	}
-
-	.about-pillar-title {
+	.about-copy p {
 		margin: 0;
 		font-family: var(--font-display);
-		font-size: clamp(1.55rem, 2vw, 2.2rem);
-		line-height: 1;
-		letter-spacing: 0.01em;
-		color: rgba(18, 22, 59, 0.97);
+		font-size: clamp(1.65rem, 2.85vw, 3.15rem);
+		line-height: 1.04;
+		letter-spacing: 0.004em;
+		color: rgba(18, 22, 59, 0.96);
 	}
 
-	.about-pillar-text {
-		margin: 0.62rem 0 0;
-		font-family: var(--font-primary);
-		font-size: clamp(0.9rem, 1.06vw, 1.05rem);
-		line-height: 1.42;
-		letter-spacing: 0.01em;
-		color: rgba(18, 22, 59, 0.88);
+	.about-copy p + p {
+		margin-top: clamp(0.7rem, 1.5vh, 1.1rem);
 	}
 
 	@media (max-width: 1100px) {
@@ -145,52 +132,26 @@
 			height: 2.2rem;
 		}
 
-		.about-container {
-			width: min(100% - 1rem, 95rem);
-			margin-left: calc(0.8rem + 2.2rem + 0.7rem + 0.55rem);
-		}
-
-		.about-layout {
-			margin-left: 0;
-		}
-
-		.about-compass-wrap {
-			position: static;
-			width: 100%;
-			aspect-ratio: auto;
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 1rem;
-			align-items: start;
-		}
-
-		.about-pillar {
-			position: relative;
-			width: 100%;
-			top: auto;
-			right: auto;
-			bottom: auto;
-			left: auto;
-			text-align: left;
-		}
-
-		.about-pillar-title {
-			font-size: clamp(1.25rem, 4.2vw, 1.65rem);
-		}
-
-		.about-pillar-text {
-			font-size: 0.92rem;
+		.about-copy {
+			min-height: calc(100vh - 5rem);
 		}
 	}
 
 	@media (max-width: 720px) {
-		.about-compass-wrap {
-			grid-template-columns: 1fr;
+		.home-about-text {
+			min-height: auto;
+			padding: 3.4rem 0 4.8rem;
 		}
 
-		.about-pillar {
-			padding: 1rem 0;
-			border-top: 1px solid rgba(18, 22, 59, 0.1);
+		.about-copy {
+			min-height: auto;
+			padding-top: 2.2rem;
+			justify-content: flex-start;
+		}
+
+		.about-copy p {
+			font-size: clamp(1.35rem, 7.2vw, 2rem);
+			line-height: 1.08;
 		}
 	}
 </style>

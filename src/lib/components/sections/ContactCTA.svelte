@@ -181,4 +181,43 @@
 			line-height: 1.64;
 		}
 	}
+
+	@media (max-width: 767px) {
+		.home-enquiry-shell {
+			grid-template-columns: 1fr;
+			padding-top: 2.8rem;
+			padding-bottom: 3rem;
+			gap: 1.6rem;
+		}
+
+		.home-enquiry-copy {
+			padding-top: 0;
+		}
+
+		.home-enquiry h2,
+		.home-enquiry-intro {
+			max-width: 100%;
+		}
+
+		.home-enquiry h2 {
+			font-size: clamp(1.85rem, 9vw, 2.9rem);
+			line-height: 0.98;
+		}
+
+		.home-enquiry-intro {
+			margin-top: 1rem;
+			font-size: 0.96rem;
+			line-height: 1.62;
+		}
+
+		.home-enquiry-details {
+			margin-top: 1.3rem;
+			gap: 0.58rem;
+		}
+
+		.home-enquiry-details p {
+			font-size: 0.78rem;
+			line-height: 1.5;
+		}
+	}
 </style>

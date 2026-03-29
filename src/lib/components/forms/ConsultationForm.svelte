@@ -68,7 +68,7 @@
 </script>
 
 <div
-	class="mx-auto mt-14 w-full max-w-2xl p-6 md:p-8 {variant === 'dark'
+	class="mx-auto mt-10 w-full max-w-2xl p-5 sm:mt-12 sm:p-6 md:mt-14 md:p-8 {variant === 'dark'
 		? 'border border-white/15 bg-white/5'
 		: variant === 'soft'
 			? 'border border-charcoal/12 bg-cream'
@@ -77,16 +77,16 @@
 	<p class="text-sm tracking-[0.1em] {variant === 'dark' ? 'text-cream/70' : 'text-slate'}">
 		{context} consultation
 	</p>
-	<h3 class="mt-3 text-3xl md:text-4xl {variant === 'dark' ? 'text-white' : 'text-charcoal'}">{title}</h3>
+	<h3 class="mt-3 text-2xl leading-tight sm:text-3xl md:text-4xl {variant === 'dark' ? 'text-white' : 'text-charcoal'}">{title}</h3>
 	<p
-		class="mt-4 text-sm leading-relaxed md:text-base {variant === 'dark'
+		class="mt-3 text-sm leading-relaxed sm:mt-4 md:text-base {variant === 'dark'
 			? 'text-cream/75'
 			: 'text-slate'}"
 	>
 		{subtitle}
 	</p>
 
-	<form class="mt-8 grid gap-4" onsubmit={handleSubmit} novalidate>
+	<form class="mt-6 grid gap-4 sm:mt-8" onsubmit={handleSubmit} novalidate>
 		<input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
 			<input
 				type="text"
@@ -110,7 +110,7 @@
 						? 'border border-charcoal/16 bg-white text-charcoal placeholder:text-slate/60'
 						: 'border border-charcoal/20 bg-white text-charcoal placeholder:text-slate/60'}"
 			/>
-			<div class="grid grid-cols-[7rem_minmax(0,1fr)] gap-3">
+			<div class="grid grid-cols-1 gap-3 sm:grid-cols-[7rem_minmax(0,1fr)]">
 				<select
 					name="phonePrefix"
 					required

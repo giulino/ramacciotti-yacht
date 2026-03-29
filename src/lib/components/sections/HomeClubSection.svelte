@@ -257,6 +257,43 @@
 		}
 	}
 
+	@media (max-width: 767px) {
+		.club-feature {
+			grid-template-columns: 1fr;
+			gap: 0;
+			padding-inline: 0.95rem;
+			padding-bottom: 2rem;
+		}
+
+		.club-feature-media,
+		.club-feature-content {
+			order: initial;
+		}
+
+		.club-feature-media {
+			min-height: 42vh;
+		}
+
+		.club-feature-content {
+			padding: 1.15rem 1rem 1.25rem;
+			border-top: 0;
+		}
+
+		.club-feature-kicker {
+			font-size: clamp(1.55rem, 7.2vw, 2.2rem);
+		}
+
+		.club-feature-content p:not(.club-feature-kicker) {
+			margin-top: 0.85rem;
+			font-size: 0.94rem;
+			line-height: 1.6;
+		}
+
+		.club-feature-cta {
+			margin-top: 0.9rem;
+		}
+	}
+
 	@media (max-width: 640px) {
 		.club-corner-logo {
 			top: 0.65rem;

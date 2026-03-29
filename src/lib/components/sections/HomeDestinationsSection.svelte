@@ -11,7 +11,7 @@
 	const destinations: Destination[] = [
 		{
 			name: 'The Caribbean',
-			tagline: 'The Caribbean — winter, reimagined.',
+			tagline: 'The Caribbean',
 			bestSeason: 'December - April',
 			description:
 				'A collection of islands shaped by light and rhythm — St. Barth, Antigua, the Bahamas, Cayman Islands. Warm winds, long lunches on deck, evenings of quiet laughter under starlit skies. A winter chapter written in turquoise.',
@@ -20,7 +20,7 @@
 		},
 		{
 			name: 'Sardinia & Costa Smeralda',
-			tagline: 'Sardinia — where summer becomes an art form.',
+			tagline: 'Sardinia',
 			bestSeason: 'June - September',
 			description:
 				'Days of barefoot elegance between hidden coves and the unmistakable hum of Porto Cervo. The scent of the sea, Italian music in the distance, and the timeless ease of Mediterranean living. The heart of Mediterranean grace.',
@@ -29,7 +29,7 @@
 		},
 		{
 			name: 'The Ligurian Riviera',
-			tagline: 'Liguria — where color meets the sea.',
+			tagline: 'Liguria',
 			bestSeason: 'May - October',
 			description:
 				'Sail along a coastline painted with charm — Portofino, Camogli, Cinque Terre. Mornings of espresso and sea spray, evenings of lights flickering on the harbor. A voyage of light, cliffs, and quiet Italian rhythm.',
@@ -318,6 +318,17 @@
 	}
 
 	@media (max-width: 640px) {
+		.destination-block,
+		.destination-block.is-reversed {
+			grid-template-columns: 1fr;
+			min-height: 0;
+		}
+
+		.destination-block.is-reversed .destination-media,
+		.destination-block.is-reversed .destination-copy {
+			order: initial;
+		}
+
 		.destinations-intro {
 			padding-bottom: 1.4rem;
 		}
@@ -330,6 +341,29 @@
 
 		.destination-media {
 			height: 26vh;
+		}
+
+		.destination-copy {
+			padding: 1rem 0.95rem 1.1rem;
+		}
+
+		.destination-copy h3 {
+			margin-top: 0.5rem;
+			font-size: clamp(1.28rem, 7vw, 1.85rem);
+		}
+
+		.destination-copy > p {
+			margin-top: 0.72rem;
+			font-size: 0.94rem;
+			line-height: 1.58;
+		}
+
+		.destination-season {
+			margin-top: 0.6rem;
+		}
+
+		.destination-cta {
+			margin-top: 0.78rem;
 		}
 	}
 </style>

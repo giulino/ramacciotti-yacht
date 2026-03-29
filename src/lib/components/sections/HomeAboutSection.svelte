@@ -135,12 +135,13 @@
 		}
 
 		.about-copy {
-			width: min(calc(100vw - (var(--page-gutter) * 2)), 58rem);
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 70rem);
 			min-height: calc(var(--about-stage-min-height) - 1.5rem);
 		}
 
 		.about-copy-text {
-			font-size: clamp(1.67rem, 2.27vw, 2.83rem);
+			font-size: clamp(2.45rem, 3.35vw, 3.95rem);
+			line-height: 1.01;
 		}
 	}
 
@@ -159,13 +160,13 @@
 		}
 
 		.about-copy {
-			width: min(calc(100vw - (var(--page-gutter) * 2)), 46rem);
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 58rem);
 			min-height: calc(var(--about-stage-min-height) - 1.25rem);
 		}
 
 		.about-copy-text {
-			font-size: clamp(1.31rem, 2.16vw, 2.05rem);
-			line-height: 1.04;
+			font-size: clamp(2rem, 3.1vw, 3rem);
+			line-height: 1.02;
 		}
 	}
 

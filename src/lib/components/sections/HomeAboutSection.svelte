@@ -40,18 +40,14 @@
 
 	<div class="about-container">
 		<div class:about-copy-visible={isVisible} class="about-copy">
-			<p>
+			<p class="about-copy-text">
 				Ramacciotti Yachts is a boutique charter and advisory house dedicated to creating refined
-				private and corporate experiences across the Caribbean and the Italian Riviera.
-			</p>
-			<p>
-				Beyond charter services, we design journeys defined by precision and the timeless calm of the
-				sea. Every element, from the yacht itself to the atmosphere onboard, is crafted to reflect
-				your lifestyle and expectations.
-			</p>
-			<p>
-				Our experienced team curates each voyage with care, delivering the same level of dedication
-				whether for families, founders, or corporate leaders seeking privacy and excellence.
+				private and corporate experiences across the Caribbean and the Italian Riviera. Beyond
+				charter services, we design journeys defined by precision and the timeless calm of the sea.
+				Every element, from the yacht itself to the atmosphere onboard, is crafted to reflect your
+				lifestyle and expectations. Our experienced team curates each voyage with care, delivering
+				the same level of dedication whether for families, founders, or corporate leaders seeking
+				privacy and excellence.
 			</p>
 		</div>
 	</div>
@@ -61,10 +57,11 @@
 	.home-about-text {
 		--corner-left: clamp(1rem, 2.6vw, 2.2rem);
 		--corner-size: clamp(2.45rem, 3.5vw, 3.3rem);
+		--about-stage-min-height: 100svh;
 		position: relative;
 		background: #fff;
-		min-height: 100vh;
-		padding: clamp(2.8rem, 5.8vh, 4.4rem) 0 clamp(0.6rem, 1.8vh, 1.2rem);
+		min-height: var(--about-stage-min-height);
+		padding: clamp(1.2rem, 2.8vh, 2rem) 0 clamp(0.1rem, 0.4vh, 0.28rem);
 	}
 
 	.about-text-corner-logo {
@@ -85,15 +82,15 @@
 	}
 
 	.about-container {
-		width: min(100% - 2rem, 84rem);
+		width: min(calc(100% - (var(--page-gutter) * 2)), var(--section-max));
 		margin: 0 auto;
-		padding-inline: clamp(1rem, 2vw, 2rem);
+		padding-inline: 0;
 	}
 
 	.about-copy {
 		display: flex;
-		min-height: calc(100vh - clamp(5.2rem, 7vh, 6.2rem));
-		max-width: 62rem;
+		width: min(calc(100vw - (var(--page-gutter) * 2)), 68rem);
+		min-height: calc(var(--about-stage-min-height) - clamp(1.8rem, 3.2vh, 2.6rem));
 		margin: 0 auto;
 		flex-direction: column;
 		align-items: center;
@@ -111,17 +108,14 @@
 		transform: translateY(0);
 	}
 
-	.about-copy p {
+	.about-copy-text {
 		margin: 0;
 		font-family: var(--font-display);
-		font-size: clamp(1.65rem, 2.85vw, 3.15rem);
-		line-height: 1.04;
+		font-size: clamp(2.16rem, 3.51vw, 3.89rem);
+		line-height: 1.02;
 		letter-spacing: 0.004em;
 		color: rgba(18, 22, 59, 0.96);
-	}
-
-	.about-copy p + p {
-		margin-top: clamp(0.7rem, 1.5vh, 1.1rem);
+		text-wrap: pretty;
 	}
 
 	@media (max-width: 1100px) {
@@ -131,9 +125,47 @@
 			width: 2.2rem;
 			height: 2.2rem;
 		}
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.home-about-text {
+			--about-stage-min-height: 100svh;
+			padding-top: 0.95rem;
+			padding-bottom: 0.15rem;
+		}
 
 		.about-copy {
-			min-height: calc(100vh - 5rem);
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 58rem);
+			min-height: calc(var(--about-stage-min-height) - 1.5rem);
+		}
+
+		.about-copy-text {
+			font-size: clamp(1.67rem, 2.27vw, 2.83rem);
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.home-about-text {
+			--about-stage-min-height: 100svh;
+			padding-top: 0.8rem;
+			padding-bottom: 0.1rem;
+		}
+
+		.about-text-corner-logo {
+			top: 0.55rem;
+			left: 0.7rem;
+			width: 2rem;
+			height: 2rem;
+		}
+
+		.about-copy {
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 46rem);
+			min-height: calc(var(--about-stage-min-height) - 1.25rem);
+		}
+
+		.about-copy-text {
+			font-size: clamp(1.31rem, 2.16vw, 2.05rem);
+			line-height: 1.04;
 		}
 	}
 
@@ -149,7 +181,7 @@
 			justify-content: flex-start;
 		}
 
-		.about-copy p {
+		.about-copy-text {
 			font-size: clamp(1.35rem, 7.2vw, 2rem);
 			line-height: 1.08;
 		}

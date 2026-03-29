@@ -57,19 +57,30 @@
 
 		const viewportW = window.innerWidth;
 		const viewportH = window.innerHeight;
-		const initialWidth = Math.min(viewportW * 0.9, 1680);
-		const initialHeight = Math.min(viewportH * 0.48, 760);
-		const insetLeft = Math.max((viewportW - initialWidth) * 0.5, 18);
+		const isTablet = viewportW < 1024;
+		const isSmallDesktop = viewportW >= 1024 && viewportW < 1440;
+		const initialWidth = Math.min(
+			viewportW * (isTablet ? 0.95 : isSmallDesktop ? 0.92 : 0.9),
+			isTablet ? 1080 : isSmallDesktop ? 1340 : 1680
+		);
+		const initialHeight = Math.min(
+			viewportH * (isTablet ? 0.34 : isSmallDesktop ? 0.4 : 0.48),
+			isTablet ? 430 : isSmallDesktop ? 560 : 760
+		);
+		const insetLeft = Math.max((viewportW - initialWidth) * 0.5, isTablet ? 10 : 18);
 		const insetRight = insetLeft;
-		const insetBottom = clamp(viewportH * 0.008, 4, 10);
-		const insetTop = Math.max(viewportH - initialHeight - insetBottom, 280);
+		const insetBottom = clamp(viewportH * (isTablet ? 0.006 : 0.008), 4, isTablet ? 8 : 10);
+		const insetTop = Math.max(
+			viewportH - initialHeight - insetBottom,
+			isTablet ? 368 : isSmallDesktop ? 324 : 280
+		);
 		const initialClip = {
 			top: insetTop,
 			right: insetRight,
 			bottom: insetBottom,
 			left: insetLeft
 		};
-		const targetVideoScale = 1.035;
+		const targetVideoScale = isTablet ? 1.022 : isSmallDesktop ? 1.028 : 1.035;
 		const triggerDistance = '+=120%';
 
 		gsap.set(mediaPositioner, {
@@ -346,7 +357,7 @@
 		width: 100%;
 		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
-		padding-inline: clamp(1.2rem, 2.8vw, 3rem);
+		padding-inline: var(--overlay-gutter);
 	}
 
 	.hero-menu-trigger {
@@ -354,7 +365,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.66rem;
-		font-size: 0.76rem;
+		font-size: var(--overlay-label-size);
 		font-weight: 400;
 		letter-spacing: 0.14em;
 		line-height: 1;
@@ -407,7 +418,7 @@
 
 	.hero-brand-logo {
 		display: block;
-		width: clamp(12.5rem, 16vw, 17.8rem);
+		width: var(--overlay-brand-width);
 		height: auto;
 		filter: brightness(0) saturate(100%) invert(8%) sepia(23%) saturate(2222%) hue-rotate(214deg)
 			brightness(89%) contrast(104%);
@@ -433,7 +444,7 @@
 		left: 50%;
 		z-index: 6;
 		display: flex;
-		width: min(92vw, 74rem);
+		width: min(calc(100vw - (var(--page-gutter) * 2)), 74rem);
 		transform: translateX(-50%);
 		flex-direction: column;
 		align-items: center;
@@ -443,7 +454,7 @@
 	.hero-title {
 		margin-top: clamp(0.6rem, 1.2vh, 1.1rem);
 		font-family: var(--font-display);
-		font-size: clamp(3.5rem, 9.7vw, 9.4rem);
+		font-size: var(--display-xl);
 		font-weight: 400;
 		line-height: 0.95;
 		letter-spacing: 0.005em;
@@ -514,7 +525,7 @@
 
 	@media (max-width: 1100px) {
 		.hero-top-nav {
-			padding-inline: 1rem;
+			padding-inline: var(--overlay-gutter);
 		}
 
 		.hero-menu-trigger {
@@ -527,14 +538,6 @@
 			height: 0.42rem;
 		}
 
-		.hero-brand-logo {
-			width: clamp(9.8rem, 21vw, 12.6rem);
-		}
-
-		.hero-title {
-			font-size: clamp(2.6rem, 11vw, 5.5rem);
-		}
-
 		.hero-quick-links {
 			gap: 1rem;
 		}
@@ -545,6 +548,71 @@
 
 		.hero-media-positioner {
 			clip-path: inset(43vh 3vw 8vh 3vw round 24px);
+		}
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.hero-shell {
+			height: 210vh;
+		}
+
+		.hero-top-nav {
+			top: 0.25rem;
+		}
+
+		.hero-copy-block {
+			top: clamp(5.3rem, 8.5vh, 6.9rem);
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 60rem);
+		}
+
+		.hero-title {
+			max-width: 10.5ch;
+		}
+
+		.hero-cta {
+			margin-top: 1.6rem;
+		}
+
+		.hero-media-positioner {
+			clip-path: inset(46vh 3.75vw 7vh 3.75vw round 26px);
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.hero-shell {
+			height: 200vh;
+		}
+
+		.hero-top-nav {
+			top: 0.4rem;
+		}
+
+		.hero-menu-trigger {
+			gap: 0.48rem;
+		}
+
+		.hero-copy-block {
+			top: clamp(5.15rem, 7.8vh, 6rem);
+			width: min(calc(100vw - (var(--page-gutter) * 2)), 48rem);
+		}
+
+		.hero-title {
+			max-width: 9.5ch;
+			line-height: 0.98;
+		}
+
+		.hero-quick-links a {
+			font-size: 0.7rem;
+			letter-spacing: 0.11em;
+		}
+
+		.hero-cta {
+			margin-top: 1.35rem;
+			padding-inline: 0.88rem;
+		}
+
+		.hero-media-positioner {
+			clip-path: inset(50vh 2.4vw 6vh 2.4vw round 22px);
 		}
 	}
 </style>

@@ -114,24 +114,24 @@
 	.journal-intro h2 {
 		margin: 0.62rem 0 0;
 		font-family: var(--font-display);
-		font-size: clamp(2rem, 5vw, 4rem);
+		font-size: var(--display-lg);
 		line-height: 0.96;
 		letter-spacing: 0.003em;
 		color: #12163b;
 	}
 
 	.journal-intro {
-		max-width: 68rem;
+		max-width: min(var(--section-max-narrow), 68rem);
 		margin: 0 auto;
-		padding: clamp(1rem, 2.8vh, 2rem) clamp(1rem, 3.2vw, 2.8rem) clamp(2.1rem, 5.5vh, 4rem);
+		padding: clamp(1rem, 2.8vh, 2rem) var(--page-gutter) clamp(2.1rem, 5.5vh, 4rem);
 		text-align: center;
 	}
 
 	.journal-intro p {
 		margin: 1.4rem auto 0;
-		max-width: 56rem;
+		max-width: min(var(--section-copy-max), 56rem);
 		font-family: var(--font-primary);
-		font-size: clamp(1rem, 1.25vw, 1.2rem);
+		font-size: var(--body-lg);
 		line-height: 1.74;
 		letter-spacing: 0.008em;
 		color: rgba(16, 24, 51, 0.9);
@@ -156,16 +156,16 @@
 	}
 
 	.journal-grid {
-		max-width: 84rem;
+		max-width: min(var(--section-max), 84rem);
 		margin: 0 auto;
-		padding: 0 clamp(1rem, 3vw, 2.6rem);
+		padding: 0 var(--page-gutter);
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(0.9rem, 1.8vw, 1.2rem);
 	}
 
 	.journal-cta-wrap {
-		padding: 1.5rem clamp(1rem, 3vw, 2.6rem) clamp(2.8rem, 8vh, 5.6rem);
+		padding: 1.5rem var(--page-gutter) clamp(2.8rem, 8vh, 5.6rem);
 		display: flex;
 		justify-content: center;
 	}
@@ -251,6 +251,52 @@
 		font-size: clamp(0.92rem, 0.98vw, 0.98rem);
 		line-height: 1.62;
 		color: rgba(18, 22, 59, 0.84);
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.journal-corner-logo {
+			top: 1.8rem;
+		}
+
+		.journal-intro {
+			padding-top: 0.8rem;
+			padding-bottom: 2.4rem;
+		}
+
+		.journal-intro p {
+			margin-top: 1.1rem;
+			line-height: 1.64;
+		}
+
+		.journal-card-copy {
+			padding: 0.95rem 1rem 1rem;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.journal-corner-logo {
+			top: 1.5rem;
+		}
+
+		.journal-intro {
+			padding-top: 0.7rem;
+			padding-bottom: 1.9rem;
+		}
+
+		.journal-intro p {
+			margin-top: 1rem;
+			font-size: 0.98rem;
+			line-height: 1.62;
+		}
+
+		.journal-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.journal-card-copy {
+			padding: 1rem;
+		}
 	}
 
 	@media (max-width: 980px) {

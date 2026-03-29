@@ -47,6 +47,9 @@
 
 <style>
 	.home-club {
+		--club-logo-top: clamp(1rem, 2.4vh, 1.6rem);
+		--club-logo-left: var(--page-gutter);
+		--club-logo-size: clamp(5rem, 7vw, 7.25rem);
 		position: relative;
 		background: #f8f6f1;
 		color: #101833;
@@ -55,13 +58,13 @@
 
 	.club-corner-logo {
 		position: absolute;
-		top: clamp(1.15rem, 3vh, 2rem);
-		left: clamp(1rem, 2.2vw, 2.3rem);
+		top: var(--club-logo-top);
+		left: var(--club-logo-left);
 		z-index: 3;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: clamp(15rem, 12vw, 10rem);
+		width: var(--club-logo-size);
 	}
 
 	.club-corner-logo img {
@@ -70,9 +73,12 @@
 	}
 
 	.club-intro {
-		max-width: 68rem;
+		max-width: min(var(--section-max-narrow), 68rem);
 		margin: 0 auto;
-		padding: clamp(1rem, 2.8vh, 2rem) clamp(1rem, 3.2vw, 2.8rem) clamp(2.4rem, 6vh, 5.2rem);
+		padding:
+			calc(var(--club-logo-top) + (var(--club-logo-size) * 0.82))
+			var(--page-gutter)
+			clamp(2.4rem, 6vh, 5.2rem);
 		text-align: center;
 	}
 
@@ -87,9 +93,9 @@
 
 	.club-intro p {
 		margin: 1.4rem auto 0;
-		max-width: 56rem;
+		max-width: min(var(--section-copy-max), 56rem);
 		font-family: var(--font-primary);
-		font-size: clamp(1rem, 1.25vw, 1.2rem);
+		font-size: var(--body-lg);
 		line-height: 1.74;
 		letter-spacing: 0.008em;
 		color: rgba(16, 24, 51, 0.9);
@@ -100,7 +106,7 @@
 		grid-template-columns: minmax(18rem, 1fr) minmax(20rem, 1fr);
 		gap: clamp(1.2rem, 3vw, 2.8rem);
 		align-items: stretch;
-		padding: 0 clamp(1rem, 3vw, 2.8rem) clamp(2rem, 6vh, 4.6rem);
+		padding: 0 var(--page-gutter) clamp(2rem, 6vh, 4.6rem);
 	}
 
 	.club-feature-media {
@@ -174,37 +180,80 @@
 	}
 
 	@media (max-width: 980px) {
-		.club-corner-logo {
-			top: 0.8rem;
-			left: 0.8rem;
-			width: clamp(4.2rem, 15vw, 5.8rem);
+		.club-feature-image {
+			min-height: 0;
+		}
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.home-club {
+			--club-logo-top: 0.95rem;
+			--club-logo-size: clamp(4.4rem, 6vw, 5.8rem);
 		}
 
 		.club-intro {
-			padding-top: clamp(4.6rem, 10vw, 6rem);
+			padding-top: calc(var(--club-logo-top) + (var(--club-logo-size) * 0.84));
+			padding-bottom: 2.8rem;
 		}
 
 		.club-intro h3 {
-			font-size: clamp(2rem, 7vw, 3.2rem);
-			line-height: 1.02;
+			font-size: clamp(1.8rem, 4vw, 3.2rem);
 		}
 
 		.club-intro p {
 			margin-top: 1rem;
-			font-size: 1rem;
-			line-height: 1.62;
+			line-height: 1.64;
+		}
+
+		.club-feature {
+			gap: 1.4rem;
+			padding-bottom: 2.8rem;
+		}
+
+		.club-feature-media {
+			min-height: clamp(24rem, 48vh, 32rem);
+		}
+
+		.club-feature-content {
+			padding: 1.3rem 1.4rem;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.home-club {
+			--club-logo-top: 0.78rem;
+			--club-logo-left: 1rem;
+			--club-logo-size: clamp(4rem, 10vw, 5rem);
+		}
+
+		.club-intro {
+			padding-top: calc(var(--club-logo-top) + (var(--club-logo-size) * 0.9));
+			padding-bottom: 2rem;
+		}
+
+		.club-intro h3 {
+			font-size: clamp(1.9rem, 5.8vw, 3rem);
+			line-height: 1.02;
+		}
+
+		.club-intro p {
+			margin-top: 0.95rem;
+			font-size: 0.98rem;
+			line-height: 1.6;
 		}
 
 		.club-feature {
 			grid-template-columns: 1fr;
-		}
-
-		.club-feature-image {
-			min-height: 0;
+			gap: 1rem;
+			padding-bottom: 2.4rem;
 		}
 
 		.club-feature-media {
-			min-height: 64vh;
+			min-height: 50vh;
+		}
+
+		.club-feature-content {
+			padding: 1.15rem 1.1rem 1.3rem;
 		}
 	}
 

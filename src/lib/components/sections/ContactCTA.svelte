@@ -51,9 +51,9 @@
 	.home-enquiry-shell {
 		position: relative;
 		z-index: 1;
-		max-width: 84rem;
+		max-width: min(var(--section-max), 84rem);
 		margin: 0 auto;
-		padding: clamp(3.5rem, 8vh, 6.5rem) clamp(1rem, 3vw, 2.8rem);
+		padding: clamp(3.5rem, 8vh, 6.5rem) var(--page-gutter);
 		display: grid;
 		grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
 		gap: clamp(1.5rem, 4vw, 4rem);
@@ -77,7 +77,7 @@
 		margin: 0.7rem 0 0;
 		max-width: 34rem;
 		font-family: var(--font-display);
-		font-size: clamp(2.2rem, 5vw, 5rem);
+		font-size: clamp(2.2rem, 5vw, 4.6rem);
 		line-height: 0.95;
 		letter-spacing: 0.01em;
 		color: #12163b;
@@ -135,9 +135,50 @@
 		text-align: left;
 	}
 
-	@media (max-width: 980px) {
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.home-enquiry-shell {
+			padding-top: 4.2rem;
+			padding-bottom: 4.3rem;
+			gap: 2.2rem;
+			grid-template-columns: minmax(0, 0.92fr) minmax(21rem, 1.08fr);
+		}
+
+		.home-enquiry h2 {
+			max-width: 30rem;
+			font-size: clamp(2rem, 4vw, 3.6rem);
+		}
+
+		.home-enquiry-intro {
+			max-width: 30rem;
+			font-size: 1rem;
+			line-height: 1.68;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
 		.home-enquiry-shell {
 			grid-template-columns: 1fr;
+			padding-top: 3.6rem;
+			padding-bottom: 3.6rem;
+			gap: 1.8rem;
+		}
+
+		.home-enquiry-copy {
+			padding-top: 0;
+		}
+
+		.home-enquiry h2,
+		.home-enquiry-intro {
+			max-width: 100%;
+		}
+
+		.home-enquiry h2 {
+			font-size: clamp(1.95rem, 4.6vw, 3rem);
+		}
+
+		.home-enquiry-intro {
+			font-size: 0.98rem;
+			line-height: 1.64;
 		}
 	}
 </style>

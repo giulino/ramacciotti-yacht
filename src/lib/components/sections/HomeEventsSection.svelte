@@ -49,8 +49,9 @@
 	}
 
 	.events-shell {
-		max-width: 100%;
-		padding: clamp(2.4rem, 6vh, 4.4rem) clamp(1rem, 2vw, 1.8rem) clamp(3rem, 8vh, 5rem);
+		width: 100%;
+		margin: 0 auto;
+		padding: clamp(2.4rem, 6vh, 4.4rem) var(--page-gutter) clamp(3rem, 8vh, 5rem);
 	}
 
 	.events-header {
@@ -180,19 +181,45 @@
 		color: rgba(186, 154, 102, 0.9);
 	}
 
-	@media (max-width: 900px) {
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.events-shell {
+			padding-top: 2.1rem;
+			padding-bottom: 3.6rem;
+		}
+
+		.event-row {
+			grid-template-columns: minmax(6rem, 8.2rem) minmax(0, 1fr);
+			gap: 1.25rem;
+		}
+
+		.event-main h3 {
+			font-size: clamp(1.9rem, 4.6vw, 4rem);
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
 		.events-header {
 			flex-direction: column;
 			align-items: start;
 		}
 
+		.events-shell {
+			padding-top: 1.95rem;
+			padding-bottom: 3rem;
+		}
+
 		.event-row {
 			grid-template-columns: 1fr;
 			gap: 0.8rem;
+			padding-block: 1rem;
 		}
 
 		.event-date {
 			padding-top: 0;
+		}
+
+		.event-main h3 {
+			font-size: clamp(1.85rem, 5vw, 3rem);
 		}
 	}
 

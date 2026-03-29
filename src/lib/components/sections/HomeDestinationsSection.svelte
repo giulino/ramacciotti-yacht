@@ -10,7 +10,8 @@
 
 	const destinations: Destination[] = [
 		{
-			tagline: 'The Caribbean',
+			name: 'The Caribbean',
+			tagline: 'The Caribbean — winter, reimagined.',
 			bestSeason: 'December - April',
 			description:
 				'A collection of islands shaped by light and rhythm — St. Barth, Antigua, the Bahamas, Cayman Islands. Warm winds, long lunches on deck, evenings of quiet laughter under starlit skies. A winter chapter written in turquoise.',
@@ -18,7 +19,8 @@
 			image: '/images/destinations/CARAIBI1.jpg'
 		},
 		{
-			tagline: 'Sardinia',
+			name: 'Sardinia & Costa Smeralda',
+			tagline: 'Sardinia — where summer becomes an art form.',
 			bestSeason: 'June - September',
 			description:
 				'Days of barefoot elegance between hidden coves and the unmistakable hum of Porto Cervo. The scent of the sea, Italian music in the distance, and the timeless ease of Mediterranean living. The heart of Mediterranean grace.',
@@ -26,7 +28,8 @@
 			image: '/images/destinations/SARDINIA2.jpg'
 		},
 		{
-			tagline: 'Liguria',
+			name: 'The Ligurian Riviera',
+			tagline: 'Liguria — where color meets the sea.',
 			bestSeason: 'May - October',
 			description:
 				'Sail along a coastline painted with charm — Portofino, Camogli, Cinque Terre. Mornings of espresso and sea spray, evenings of lights flickering on the harbor. A voyage of light, cliffs, and quiet Italian rhythm.',
@@ -64,13 +67,7 @@
 				</div>
 				<div class="destination-copy">
 					<p class="destination-region">{destination.name}</p>
-					<h3>
-						{#if destination.name === 'Sardinia & The Costa Smeralda'}
-							Sardinia — where summer becomes an <span class="destination-emphasis">art form</span>.
-						{:else}
-							{destination.tagline}
-						{/if}
-					</h3>
+					<h3>{destination.tagline}</h3>
 					<p>{destination.description}</p>
 					<p class="destination-season">Best Season: {destination.bestSeason}</p>
 					<a href="#home-enquiry" class="destination-cta">{destination.cta}</a>
@@ -105,9 +102,9 @@
 	}
 
 	.destinations-intro {
-		max-width: 72rem;
+		max-width: min(var(--section-max), 72rem);
 		margin: 0 auto;
-		padding: clamp(2.4rem, 6vh, 5rem) clamp(1rem, 3vw, 2.4rem) clamp(1.8rem, 4vh, 3rem);
+		padding: clamp(2.4rem, 6vh, 5rem) var(--page-gutter) clamp(1.8rem, 4vh, 3rem);
 		text-align: center;
 	}
 
@@ -130,16 +127,16 @@
 
 	.destinations-intro > p:last-child {
 		margin: 1.1rem auto 0;
-		max-width: 56rem;
+		max-width: min(var(--section-copy-max), 56rem);
 		font-family: var(--font-primary);
-		font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+		font-size: clamp(0.95rem, 1.15vw, 1.08rem);
 		line-height: 1.72;
 		letter-spacing: 0.008em;
 		color: rgba(18, 22, 59, 0.84);
 	}
 
 	.destinations-editorial {
-		padding: clamp(0.65rem, 1.7vh, 1.2rem) 0 clamp(1.7rem, 4.5vh, 3.3rem);
+		padding: clamp(0.65rem, 1.7vh, 1.2rem) var(--page-gutter) clamp(1.7rem, 4.5vh, 3.3rem);
 		display: grid;
 		gap: clamp(0.6rem, 1.1vh, 0.9rem);
 	}
@@ -193,10 +190,6 @@
 		line-height: 0.98;
 	}
 
-	.destination-emphasis {
-		font-style: italic;
-	}
-
 	.destination-copy > p {
 		margin: 0.72rem 0 0;
 		font-family: var(--font-primary);
@@ -229,7 +222,44 @@
 		border-color: rgba(186, 154, 102, 0.78);
 	}
 
-	@media (max-width: 980px) {
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.destinations-corner-logo {
+			top: 2.45rem;
+		}
+
+		.destinations-intro {
+			padding-top: 2.1rem;
+			padding-bottom: 2rem;
+		}
+
+		.destinations-intro h2 {
+			font-size: clamp(1.95rem, 4.6vw, 4rem);
+		}
+
+		.destinations-editorial {
+			padding-top: 0.55rem;
+			padding-bottom: 2.3rem;
+		}
+
+		.destination-block {
+			min-height: min(46vh, 28rem);
+		}
+
+		.destination-copy {
+			padding: 1.05rem 1rem;
+		}
+
+		.destination-copy h3 {
+			font-size: clamp(1.2rem, 1.75vw, 1.85rem);
+		}
+
+		.destination-copy > p {
+			font-size: 0.9rem;
+			line-height: 1.5;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
 		.destination-block,
 		.destination-block.is-reversed {
 			grid-template-columns: 1fr;
@@ -241,31 +271,49 @@
 			order: initial;
 		}
 
+		.destinations-corner-logo {
+			top: 2rem;
+		}
+
+		.destinations-intro {
+			padding-top: 1.9rem;
+			padding-bottom: 1.55rem;
+		}
+
+		.destinations-intro h2 {
+			font-size: clamp(1.85rem, 4.8vw, 3.1rem);
+		}
+
+		.destinations-intro > p:last-child {
+			font-size: 0.98rem;
+			line-height: 1.66;
+		}
+
 		.destination-media {
-			height: 32vh;
+			height: 28vh;
 		}
 
 		.destination-copy {
-			padding: 1rem 0.95rem 1.1rem;
+			padding: 1.05rem 1rem 1.15rem;
 		}
 
 		.destination-copy h3 {
 			margin-top: 0.5rem;
-			font-size: clamp(1.45rem, 5.8vw, 2.05rem);
+			font-size: clamp(1.35rem, 4.5vw, 1.95rem);
 		}
 
 		.destination-copy > p {
-			margin-top: 0.82rem;
+			margin-top: 0.72rem;
 			font-size: 0.94rem;
-			line-height: 1.62;
+			line-height: 1.58;
 		}
 
 		.destination-season {
-			margin-top: 0.72rem;
+			margin-top: 0.6rem;
 		}
 
 		.destination-cta {
-			margin-top: 0.95rem;
+			margin-top: 0.78rem;
 		}
 	}
 

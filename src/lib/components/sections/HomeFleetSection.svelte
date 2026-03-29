@@ -52,7 +52,7 @@
 	}
 
 	.fleet-heading-wrap {
-		padding: clamp(1.4rem, 2.4vh, 2.2rem) clamp(1rem, 2vw, 2rem) clamp(0.9rem, 1.6vh, 1.5rem);
+		padding: clamp(1.4rem, 2.4vh, 2.2rem) var(--page-gutter) clamp(0.9rem, 1.6vh, 1.5rem);
 		scroll-margin-top: clamp(4.5rem, 8vh, 6rem);
 	}
 
@@ -100,7 +100,7 @@
 	.fleet-corner-logo {
 		position: absolute;
 		top: clamp(0.78rem, 1.8vh, 1.2rem);
-		left: clamp(1rem, 2.2vw, 2.3rem);
+		left: var(--page-gutter);
 		z-index: 2;
 		display: inline-flex;
 		align-items: center;
@@ -147,6 +147,51 @@
 	@media (max-width: 900px) {
 		.fleet-discover-cta {
 			bottom: 1rem;
+		}
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.fleet-heading-wrap {
+			padding-top: 1.15rem;
+			padding-bottom: 0.85rem;
+		}
+
+		.fleet-heading {
+			font-size: clamp(2.35rem, 6vw, 5.2rem);
+		}
+
+		.fleet-corner-logo {
+			top: 0.9rem;
+			width: 2.9rem;
+			height: 2.9rem;
+		}
+
+		.fleet-discover-cta {
+			bottom: 1.35rem;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.fleet-heading-wrap {
+			padding-top: 1rem;
+			padding-bottom: 0.7rem;
+		}
+
+		.fleet-heading {
+			font-size: clamp(2.2rem, 7vw, 4rem);
+			line-height: 0.96;
+		}
+
+		.fleet-corner-logo {
+			top: 0.8rem;
+			width: 2.65rem;
+			height: 2.65rem;
+		}
+
+		.fleet-discover-cta {
+			bottom: 1rem;
+			min-width: 8.4rem;
+			min-height: 2.22rem;
 		}
 	}
 </style>

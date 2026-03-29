@@ -58,7 +58,7 @@
 		inset: 0;
 		display: flex;
 		flex-direction: column;
-		padding: clamp(0.9rem, 1.8vw, 2rem) clamp(1.2rem, 2.8vw, 3rem) clamp(2rem, 4vh, 3rem);
+		padding: clamp(0.9rem, 1.8vw, 2rem) var(--overlay-gutter) clamp(2rem, 4vh, 3rem);
 		background: #f6f6f4;
 		color: #12163b;
 		transform: translateY(-102%);
@@ -118,7 +118,7 @@
 		justify-content: space-between;
 		gap: 1.2rem;
 		font-family: var(--font-display);
-		font-size: clamp(2.2rem, 8vw, 7.4rem);
+		font-size: var(--fullscreen-menu-title);
 		font-weight: 400;
 		line-height: 0.93;
 		letter-spacing: 0.004em;
@@ -148,5 +148,40 @@
 	.fullscreen-menu__link:focus-visible {
 		transform: translateX(0.28rem);
 		opacity: 0.88;
+	}
+
+	@media (max-width: 1439px) and (min-width: 1024px) {
+		.fullscreen-menu__nav {
+			width: min(100%, 60rem);
+			margin-top: clamp(2rem, 5vh, 3.2rem);
+		}
+
+		.fullscreen-menu__plus {
+			width: 2.4rem;
+			height: 2.4rem;
+			font-size: 1.35rem;
+		}
+	}
+
+	@media (max-width: 1023px) and (min-width: 768px) {
+		.fullscreen-menu__sheet {
+			padding-bottom: 2.4rem;
+		}
+
+		.fullscreen-menu__nav {
+			width: min(100%, 46rem);
+			margin-top: 2rem;
+		}
+
+		.fullscreen-menu__link {
+			gap: 0.95rem;
+			line-height: 0.96;
+		}
+
+		.fullscreen-menu__plus {
+			width: 2.15rem;
+			height: 2.15rem;
+			font-size: 1.2rem;
+		}
 	}
 </style>

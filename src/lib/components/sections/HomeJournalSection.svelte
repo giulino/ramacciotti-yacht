@@ -41,11 +41,6 @@
 	<section class="journal-intro">
 		<p class="journal-kicker">Journal</p>
 		<h2>The Journal</h2>
-		<p>
-			The Journal is our ongoing collection of stories, reflections, and seasonal notes from the world of
-			Ramacciotti Yachts. From destination insight to founder perspective and selected partnerships, each entry
-			is shaped with the same discretion, calm, and editorial clarity that define our voyages.
-		</p>
 
 		<div class="journal-categories" aria-label="Journal categories">
 			<span>Voyages</span>

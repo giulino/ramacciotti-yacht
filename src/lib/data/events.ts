@@ -43,31 +43,6 @@ export const events: EventItem[] = [
 			'Guests are received with discretion and one point of contact throughout the show, whether the brief is personal chartering, family travel, or a corporate hospitality itinerary.'
 	},
 	{
-		slug: 'dubai-international-boat-show',
-		month: 'APR',
-		days: '8 - 12',
-		year: '2026',
-		title: 'Dubai International Boat Show',
-		location: 'Dubai Harbour',
-		fullDate: 'April 8, 2026',
-		category: 'Boat Show',
-		address: 'Dubai Harbour, Dubai Marina District',
-		stand: 'Private attendance by appointment',
-		openingHours: [
-			'08/04 3PM - 8PM',
-			'09/04 3PM - 8PM',
-			'10/04 3PM - 8PM',
-			'11/04 3PM - 8PM',
-			'12/04 3PM - 8PM'
-		],
-		contactEmail: 'events@ramacciottiyachts.com',
-		image: '/images/hero/casagnola-05.jpeg',
-		intro:
-			'In Dubai, our team hosts a limited number of appointments for owners, charter guests, and companies looking for a more discreet way to stage hospitality at sea.',
-		note:
-			'Meetings are tailored around your calendar and objectives, with curated yacht recommendations, routing ideas, and private next steps prepared in advance.'
-	},
-	{
 		slug: 'cannes-yachting-festival',
 		month: 'SEP',
 		days: '8 - 13',

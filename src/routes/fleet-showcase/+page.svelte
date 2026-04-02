@@ -45,22 +45,6 @@
 			]
 		},
 		{
-			name: 'Casagnola Heritage',
-			length: '85 ft',
-			guests: '8 guests',
-			crew: '4 crew',
-			speed: '12 kn',
-			location: 'Italian Riviera',
-			images: [
-				'/images/fleet/casagnola-heritage/casagnola-heritage-01.jpeg',
-				'/images/fleet/casagnola-heritage/casagnola-heritage-02.jpeg',
-				'/images/fleet/casagnola-heritage/casagnola-heritage-03.jpeg',
-				'/images/fleet/casagnola-heritage/casagnola-heritage-04.jpeg',
-				'/images/fleet/casagnola-heritage/casagnola-heritage-05.jpeg',
-				'/images/fleet/casagnola-heritage/casagnola-heritage-06.jpeg'
-			]
-		},
-		{
 			name: 'Ferretti 860',
 			length: '86 ft',
 			guests: '8 guests',
@@ -116,6 +100,22 @@
 				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_6.jpg',
 				'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/FLEET/FERRETTI-681/Ferretti680_7.jpg'
 			]
+		},
+		{
+			name: 'Casagnola Heritage',
+			length: '85 ft',
+			guests: '8 guests',
+			crew: '4 crew',
+			speed: '12 kn',
+			location: 'Italian Riviera',
+			images: [
+				'/images/fleet/casagnola-heritage/casagnola-heritage-01.jpeg',
+				'/images/fleet/casagnola-heritage/casagnola-heritage-02.jpeg',
+				'/images/fleet/casagnola-heritage/casagnola-heritage-03.jpeg',
+				'/images/fleet/casagnola-heritage/casagnola-heritage-04.jpeg',
+				'/images/fleet/casagnola-heritage/casagnola-heritage-05.jpeg',
+				'/images/fleet/casagnola-heritage/casagnola-heritage-06.jpeg'
+			]
 		}
 	];
 
@@ -165,6 +165,7 @@
 						loading={vesselIndex === 0 && imageIndex === 0 ? 'eager' : 'lazy'}
 						decoding="async"
 					/>
+					<a href="#fleet-consultation" class="fleet-gallery__inquire">Inquire</a>
 				</article>
 			{/each}
 		</div>
@@ -204,7 +205,7 @@
 	</section>
 {/each}
 
-<section class="fleet-consultation">
+<section id="fleet-consultation" class="fleet-consultation">
 	<div class="fleet-consultation__shell">
 		<ConsultationForm
 			context="Fleet"
@@ -304,6 +305,36 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.fleet-gallery__inquire {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+		border: 1px solid rgba(255, 255, 255, 0.6);
+		border-radius: 999px;
+		padding: 0.5rem 1.4rem;
+		background: rgba(18, 22, 59, 0.45);
+		backdrop-filter: blur(6px);
+		font-family: var(--font-primary);
+		font-size: 0.74rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #fff;
+		text-decoration: none;
+		opacity: 0;
+		transition: opacity 280ms ease, background 220ms ease;
+	}
+
+	.fleet-gallery__slide:hover .fleet-gallery__inquire {
+		opacity: 1;
+	}
+
+	.fleet-gallery__inquire:hover {
+		background: rgba(186, 154, 102, 0.7);
+		border-color: rgba(186, 154, 102, 0.8);
 	}
 
 	.fleet-gallery__bottom {

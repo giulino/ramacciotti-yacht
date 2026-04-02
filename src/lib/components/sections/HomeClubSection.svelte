@@ -10,12 +10,6 @@
 
 	<section class="club-intro">
 		<h3>Belonging begins when the voyage ends.</h3>
-		<p>
-			Ramacciotti Club is the natural continuation of our voyages — a private circle reserved for those who
-			have experienced the care of sailing with us. It’s not a membership in the traditional sense, but a way of
-			belonging. A connection that extends beyond the sea, defined by shared elegance, trust, and the quiet
-			privileges of returning home to something familiar.
-		</p>
 	</section>
 
 	<section class="club-feature">
@@ -49,7 +43,7 @@
 	.home-club {
 		--club-logo-top: clamp(1rem, 2.4vh, 1.6rem);
 		--club-logo-left: var(--page-gutter);
-		--club-logo-size: clamp(5rem, 7vw, 7.25rem);
+		--club-logo-size: clamp(5rem, 10vw, 10.9rem);
 		position: relative;
 		background: #f8f6f1;
 		color: #101833;

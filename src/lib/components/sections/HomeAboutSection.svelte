@@ -42,12 +42,7 @@
 		<div class:about-copy-visible={isVisible} class="about-copy">
 			<p class="about-copy-text">
 				Ramacciotti Yachts is a boutique charter and advisory house dedicated to creating refined
-				private and corporate experiences across the Caribbean and the Italian Riviera. Beyond
-				charter services, we design journeys defined by precision and the timeless calm of the sea.
-				Every element, from the yacht itself to the atmosphere onboard, is crafted to reflect your
-				lifestyle and expectations. Our experienced team curates each voyage with care, delivering
-				the same level of dedication whether for families, founders, or corporate leaders seeking
-				privacy and excellence.
+				private and corporate experiences across the Caribbean and the Italian Riviera.
 			</p>
 		</div>
 	</div>
@@ -57,7 +52,7 @@
 	.home-about-text {
 		--corner-left: clamp(1rem, 2.6vw, 2.2rem);
 		--corner-size: clamp(2.45rem, 3.5vw, 3.3rem);
-		--about-stage-min-height: 100svh;
+		--about-stage-min-height: 60svh;
 		position: relative;
 		background: #fff;
 		min-height: var(--about-stage-min-height);
@@ -129,7 +124,7 @@
 
 	@media (max-width: 1439px) and (min-width: 1024px) {
 		.home-about-text {
-			--about-stage-min-height: 100svh;
+			--about-stage-min-height: 60svh;
 			padding-top: 0.95rem;
 			padding-bottom: 0.15rem;
 		}
@@ -147,7 +142,7 @@
 
 	@media (max-width: 1023px) and (min-width: 768px) {
 		.home-about-text {
-			--about-stage-min-height: 100svh;
+			--about-stage-min-height: 60svh;
 			padding-top: 0.8rem;
 			padding-bottom: 0.1rem;
 		}

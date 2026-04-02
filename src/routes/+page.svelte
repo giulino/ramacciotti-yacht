@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Footer from '$lib/components/layout/Footer.svelte';
+
 	import HomeStickyPanel from '$lib/components/layout/HomeStickyPanel.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import HomeAboutSection from '$lib/components/sections/HomeAboutSection.svelte';
@@ -24,4 +24,3 @@
 <HomeJournalSection />
 <HomeEventsSection />
 <ContactCTA />
-<Footer />

@@ -7,10 +7,6 @@
 		<div class="home-enquiry-copy">
 			<p class="home-enquiry-kicker">Private Consultation</p>
 			<h2>Begin your journey with a conversation shaped around you.</h2>
-			<p class="home-enquiry-intro">
-				Share your timing, preferred destinations, and the atmosphere you want to create onboard. We reply
-				personally with discretion, clarity, and a considered next step.
-			</p>
 
 			<div class="home-enquiry-details" aria-label="Consultation details">
 				<p>Founder-led advisory</p>
@@ -22,7 +18,7 @@
 		<div class="home-enquiry-form-wrap">
 			<ConsultationForm
 				context="Home"
-				title="Request a private proposal"
+				title="Plan Your Charter"
 				subtitle="Tell us where you want to go and how you want it to feel. We will come back with a considered response."
 				variant="light"
 			/>
@@ -77,7 +73,7 @@
 		margin: 0.7rem 0 0;
 		max-width: 34rem;
 		font-family: var(--font-display);
-		font-size: clamp(2.2rem, 5vw, 4.6rem);
+		font-size: clamp(1.8rem, 3.5vw, 3.2rem);
 		line-height: 0.95;
 		letter-spacing: 0.01em;
 		color: #12163b;

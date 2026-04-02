@@ -11,7 +11,9 @@
 			page.url.pathname === '/corporate' ||
 			page.url.pathname === '/fleet' ||
 			page.url.pathname === '/fleet-showcase' ||
-			page.url.pathname.startsWith('/events/')
+			page.url.pathname === '/about' ||
+			page.url.pathname.startsWith('/events/') ||
+			page.url.pathname.startsWith('/journal')
 	);
 </script>
 
@@ -40,6 +42,4 @@
 	{@render children()}
 </main>
 
-{#if !isHome}
-	<Footer />
-{/if}
+<Footer />

@@ -5,7 +5,7 @@
 	const navLinks: NavLink[] = [
 		{ label: 'Home', href: '/' },
 		{ label: 'About', href: '/about' },
-		{ label: 'Fleet', href: '/fleet' },
+		{ label: 'Fleet', href: '/fleet-showcase' },
 		{ label: 'The Club', href: '/club' },
 		{ label: 'Journal', href: '/journal' }
 	];

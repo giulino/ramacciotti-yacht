@@ -59,7 +59,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: clamp(0.9rem, 1.8vw, 2rem) var(--overlay-gutter) clamp(2rem, 4vh, 3rem);
-		background: #f6f6f4;
+		background: #ffffff;
 		color: #12163b;
 		transform: translateY(-102%);
 		transition: transform 720ms cubic-bezier(0.2, 0.88, 0.28, 1);

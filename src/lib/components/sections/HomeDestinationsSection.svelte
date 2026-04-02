@@ -10,31 +10,28 @@
 
 	const destinations: Destination[] = [
 		{
-			name: 'The Caribbean',
 			tagline: 'The Caribbean',
 			bestSeason: 'December - April',
 			description:
 				'A collection of islands shaped by light and rhythm — St. Barth, Antigua, the Bahamas, Cayman Islands. Warm winds, long lunches on deck, evenings of quiet laughter under starlit skies. A winter chapter written in turquoise.',
 			cta: 'Enquire for Caribbean Voyages',
-			image: '/images/destinations/CARAIBI1.jpg'
+			image: 'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/DESTINATIONS/CARAIBI.webp'
 		},
 		{
-			name: 'Sardinia & Costa Smeralda',
-			tagline: 'Sardinia',
+			tagline: 'Sardinia & Costa Smeralda',
 			bestSeason: 'June - September',
 			description:
 				'Days of barefoot elegance between hidden coves and the unmistakable hum of Porto Cervo. The scent of the sea, Italian music in the distance, and the timeless ease of Mediterranean living. The heart of Mediterranean grace.',
 			cta: 'Plan a Sardinia Voyage',
-			image: '/images/destinations/SARDINIA2.jpg'
+			image: 'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/DESTINATIONS/SARDEGNA.jpg'
 		},
 		{
-			name: 'The Ligurian Riviera',
-			tagline: 'Liguria',
+			tagline: 'Liguria Riviera',
 			bestSeason: 'May - October',
 			description:
 				'Sail along a coastline painted with charm — Portofino, Camogli, Cinque Terre. Mornings of espresso and sea spray, evenings of lights flickering on the harbor. A voyage of light, cliffs, and quiet Italian rhythm.',
 			cta: 'Request Itinerary Inspiration',
-			image: '/images/fleet/folgore-88/folgore-88-06.jpg'
+			image: 'https://6enkohgyxx9vys7c.public.blob.vercel-storage.com/DESTINATIONS/LIGURIA.jpg'
 		}
 	];
 </script>
@@ -52,11 +49,6 @@
 	<header class="destinations-intro">
 		<p class="destinations-kicker">Our Destinations</p>
 		<h2>Journeys Curated by Feeling</h2>
-		<p>
-			At Ramacciotti Yachts, we curate journeys defined not by distance, but by feeling. From the turquoise calm
-			of the Caribbean to the timeless allure of the Mediterranean, each destination is chosen for its spirit, its
-			elegance, and its sense of belonging.
-		</p>
 	</header>
 
 	<section class="destinations-editorial">

@@ -6,9 +6,9 @@
 
 	const menuLinks = [
 		{ label: 'Home', href: '/' },
-		{ label: 'About', href: '#about' },
-		{ label: 'Fleet', href: '#fleet-overview' },
-		{ label: 'The Club', href: '#club' },
+		{ label: 'About', href: '/about' },
+		{ label: 'Fleet', href: '/fleet-showcase' },
+		{ label: 'The Club', href: '/club' },
 		{ label: 'Journal', href: '#journal-home' }
 	];
 
@@ -294,7 +294,7 @@
 				<span class="hero-title-italic">The Art</span>
 				<span>of Yacht Chartering</span>
 			</h1>
-			<a href="#fleet-overview" class="hero-cta">Discover the fleet</a>
+			<a href="/fleet-showcase" class="hero-cta">Discover the fleet</a>
 		</div>
 
 		<div bind:this={mediaPositioner} class="hero-media-positioner">
@@ -327,7 +327,7 @@
 		--brand-blue: #12163b;
 		position: relative;
 		height: 220vh;
-		background: #efefef;
+		background: #ffffff;
 	}
 
 	.hero-anchor {

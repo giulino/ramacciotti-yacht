@@ -5,9 +5,9 @@
 
 	const navLinks: NavLink[] = [
 		{ label: 'Home', href: '/' },
-		{ label: 'About', href: '#about' },
-		{ label: 'Fleet', href: '#fleet-overview' },
-		{ label: 'The Club', href: '#club' },
+		{ label: 'About', href: '/about' },
+		{ label: 'Fleet', href: '/fleet-showcase' },
+		{ label: 'The Club', href: '/club' },
 		{ label: 'Journal', href: '#journal-home' }
 	];
 
